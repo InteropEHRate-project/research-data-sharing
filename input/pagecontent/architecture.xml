@@ -1,0 +1,182 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+    <p>
+        The figure below shows the main software systems, their exposed APIs, and the human actors whose actions and communication are covered by the Protocol.
+    </p>
+    <p>Actors:</p>
+    <ul>
+        <li>the <b>Citizen</b> who shares his/her data;</li>
+        <li>the <b>PI of the Study</b> who uploads the study on the Central Node for publishing;</li>
+        <li>the <b>Central Node Administrator</b> who actually publishes the studies;</li>
+        <li>the <b>PI of each participating Research Centre.</b></li>
+    </ul>
+
+    <p>Systems:</p>
+    <ul>
+        <li>the <b>S-EHR App</b>, through which the Citizen expresses his/her consent and shares health data;</li>
+        <li>the <b>Central Node</b>, on which RDDs are published and are downloadable by the S-EHR App;</li>
+        <li>the <b>Research Centre Information System</b> of each participating research centre, to which participating citizens are attached and to which they send their health data.</li>
+    </ul>
+
+    <p>Interfaces:</p>
+    <ul>
+        <li>the <b>RDDI</b> (Research Definition Document Interface) through which RDDs are downloaded by the S-EHR App;</li>
+        <li>the <b>RDSI</b> (Research data Sharing Interface) through which consent to data sharing is expressed and health data are securely transmitted.</li>
+    </ul>
+
+    <figure>
+        <img height="400" src="channelsoftheProtocol.png" alt="Systems, actors, and communication channels of the Protocol"/>
+        <figcaption>Figure 3.1: Systems, actors, and communication channels of the Protocol</figcaption>
+    </figure>
+    <br/>
+    <a name="hcinterfaces"> </a>
+    <h3>Human-Computer Interfaces and Use Cases</h3>
+    <p>
+        This section describes the user interfaces that are part of the Protocol, from a high-level functional perspective of use cases.
+        The Protocol covers the interactions of the Citizen, the PI of the Study, and the Central Node Administrator with the system,
+        as well as the interactions of the PI of the RC, who oversees the participation of local citizens in multi-centric studies.
+    </p>
+
+    <a name="appinterface"> </a>
+    <h4>The Citizen / S-EHR App Interface</h4>
+    <figure>
+        <img height="400" src="uc_citizen_app.png" alt="Use case diagram for the interaction of the Citizen with the S-EHR App"/>
+        <figcaption>Figure 3.2: Use case diagram for the interaction of the Citizen with the S-EHR App</figcaption>
+    </figure>
+    <br/>
+    <ul>
+        <li><b>OPT-IN to future participation:</b> the Citizen sets his/her status on the smartphone as “interested” in participating in future studies. Before doing so, the Citizen is informed of what this entails (namely, the silent verification of enrollment criteria on his/her phone by accessing his/her health data). This allows the phone regularly to retrieve information about studies.</li>
+        <li><b>Get informed of new studies and their conditions:</b> the Citizen is informed about every study for which his/her health data meet the eligibility criteria, including the purpose and details of the study, the data collected, etc.</li>
+        <li><b>Acceptance of ENROLMENT into study:</b> the Citizen formally accepts to participate in a given study.</li>
+        <li><b>WITHDRAWAL from study:</b> the Citizen formally signals the decision to stop sending data for a given study.</li>
+        <li><b>OPT-OUT from participation:</b> the Citizen sets his/her status on the smartphone as “not interested” anymore in participating in future studies.</li>
+    </ul>
+
+
+    <a name="pi_study_interface"> </a>
+    <h4>The PI of the Study / Central Node Interface</h4>
+    <figure>
+        <img height="400" src="uc_pi_study.png" alt="Use case diagram for the interaction of the PI of the Study with the Central Node"/>
+        <figcaption>Figure 3.3: Use case diagram for the interaction of the PI of the Study with the Central Node</figcaption>
+    </figure>
+    <br/>
+    <ul>
+        <li><b>Authenticate:</b> the PI of the Study or the Central Node Administrator connect to the study management system of the Central Node and authenticate themselves.</li>
+        <li><b>Upload RDD of new study for publishing: </b>the PI of the Study uploads onto the Central Node the formal definition of a new study in the form of an RDD file.</li>
+        <li><b>Publish and manage uploaded studies:</b> the Central Node Administrator reviews uploaded studies, authorizing or refusing to publish them to be accessible by all citizens who have opted in to future studies.</li>
+        <li><b>Audit study:</b> the PI of the Study reviews the logs of enrollment, data retrieval, and withdrawal operations collected during the period of the study.</li>
+    </ul>
+
+
+    <a name="pi_research_interface"> </a>
+    <h4>The PI of the Research Centre / Research Centre Interface</h4>
+    <figure>
+        <img height="400" src="uc_pi_centre.png" alt="Use case diagram for the interaction of the PI of the RC with the Research Centre"/>
+        <figcaption>Figure 3.4: Use case diagram for the interaction of the PI of the RC with the Research Centre</figcaption>
+    </figure>
+    <br/>
+    <ul>
+        <li><b>Authenticate:</b> the PI of the Research Centre logs into the administration system of the Research Centre.</li>
+        <li><b>Consult study participation statistics:</b> the PI of the RC displays aggregate statistics about the participants (enrollments, withdrawals, etc.) to a given study who are attached to his/her research centre.</li>
+        <li><b>Consult logs of citizen participation to study:</b> the PI of the RC reviews detailed per-patient operations that were logged by the RC system.</li>
+    </ul>
+
+
+    <a name="programming_interface"> </a>
+    <h3>Programming Interfaces</h3>
+
+    <a name="central_node_interface"> </a>
+    <h4>Central Node</h4>
+
+    <p>
+        The Central Node provides the services exposed through the Research Dataset Definition Interface (RDDI), through a library called RDDI-Service.
+        It also uses the RDS-Security library to secure the RDDI communication channel. RDDI is a RESTful interface.
+    </p>
+
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 3.1: Methods of the RDDI Interface</caption>
+        <tr>
+            <th style="color: white; background-color: #548dd4;">RDDI</th>
+            <th style="color: white; background-color: #548dd4;">Caller </th>
+            <th style="color: white; background-color: #548dd4;">Input Parameters</th>
+            <th style="color: white; background-color: #548dd4;">Return value</th>
+            <th style="color: white; background-color: #548dd4;">Description</th>
+        </tr>
+        <tr>
+            <td style="color: white; background-color: #548dd4;">submitStudy</td>
+            <td>Research Portal</td>
+            <td>RDD rdd,
+                int principalInvestigatorID</td>
+            <td>boolean</td>
+            <td>Allows a Principal Investigator to submit (upload) a new study onto the Central Node, in the form of a Research Definition Document. Returns true on success.</td>
+        </tr>
+        <tr>
+            <td style="color: white; background-color: #548dd4;">getOpenStudies</td>
+            <td>RDS-Logic through RDDI-Client</td>
+            <td>void</td>
+            <td>SignedRDDList openStudies</td>
+            <td>Allows a S-EHR App to retrieve the digitally signed list of currently open studies, to which enrollment is possible. Returns a list of RDDs, each describing a study.</td>
+        </tr>
+    </table>
+
+
+
+    <a name="research_centre_information_system"> </a>
+    <h4>Research Centre Information System</h4>
+
+    <p>
+        The Research Centre Information System provides the services exposed through the Research Data Sharing Interface (RDSI),
+        through a library called RDSI-Service. It also uses the RDS-Security library to secure the RDSI communication channel.
+        RDSI is a RESTful interface.
+    </p>
+
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 3.2: Methods of the RDSI Interface</caption>
+        <tr>
+            <th style="color: white; background-color: #548dd4;">RDSI Endpoint</th>
+            <th style="color: white; background-color: #548dd4;">Caller </th>
+            <th style="color: white; background-color: #548dd4;">Input Parameters</th>
+            <th style="color: white; background-color: #548dd4;">Return value</th>
+            <th style="color: white; background-color: #548dd4;">Description</th>
+        </tr>
+        <tr>
+            <td style="color: white; background-color: #548dd4;">sendEnrollmentConsent</td>
+            <td>RDS-Logic through RDSI-Client</td>
+            <td>int studyID,<br/>
+                Patient citizenIdentification <br/>
+                int citizenPseudonym, String signedConsent, <br/>
+                int sehrAppId</td>
+            <td>SignedContract</td>
+            <td>Send the Citizen’s electronically signed consent of enrolling into a specific study. The consent also includes personal identification information on the citizen (represented here as a “Patient” data object), the newly generated study-specific pseudonym, as well as the SEHR App ID. The receiving RC checks the signature validity of the signedConsent, signs and returns the contract signed by both parties</td>
+        </tr>
+        <tr>
+            <td style="color: white; background-color: #548dd4;">sendExitNotification</td>
+            <td>RDS-Logic through RDSI-Client</td>
+            <td>int studyID, <br/>
+                int citizenPseudonym, <br/>
+                ExitReason reason, <br/>
+                String citizenSignature</td>
+            <td>boolean</td>
+            <td>Send a notification that the Citizen is exiting a study due to the exit criteria being met. ExitReason can be: enrollment criteria negative, exit criteria positive. Returns true on success.</td>
+        </tr>
+
+        <tr>
+            <td style="color: white; background-color: #548dd4;">sendWithdrawal</td>
+            <td>RDS-Logic through RDSI-Client</td>
+            <td>int studyID, <br/>
+                int citizenPseudonym, <br/>
+                String citizenSignature</td>
+            <td>boolean</td>
+            <td>Send a notification that the Citizen is withdrawing from an ongoing research study. Returns true on success.</td>
+        </tr>
+
+        <tr>
+            <td style="color: white; background-color: #548dd4;">sendHealthData</td>
+            <td>RDS-Logic through RDSI-Client</td>
+            <td>int studyID, <br/>
+                int citizenPseudonym,<br/>
+                Encrypted fhirBundle</td>
+            <td>boolean</td>
+            <td>Allows a S-EHR App to send citizen health data to the RRC. The receiving RC decrypts the Encrypted bundle and retrieves the FHIR bundle. Returns true on success.</td>
+        </tr>
+    </table>
+</div>

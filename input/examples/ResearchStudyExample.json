@@ -1,0 +1,177 @@
+{
+      "resourceType": "ResearchStudy",
+      "id": "563453",
+      "meta": {
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/ResearchStudy-IEHR" ]
+      },    
+	  "language": "en",
+      "identifier": [ {
+        "system": "urn:oid:1.11.111.1.1.11.111.11",
+        "value": "123321ab-123321ab"
+      } ],
+      "title": "ResearchStudyIHR Example",
+      "status": "active",
+      "primaryPurposeType": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type",
+          "code": "treatment",
+          "display": "Treatment"
+        } ]
+      },
+      "condition": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "1155004",
+          "display": "Myocardial hypertrophy, determined by electrocardiogram"
+        } ]
+      } ],
+      "contact": [ {
+        "name": "Mr Alberto Milano",
+        "telecom": [ {
+          "system": "phone",
+          "value": "111111111"
+        } ]
+      } ],
+      "location": [ {
+        "coding": [ {
+          "system": "urn:iso:std:iso:3166:-2",
+          "code": "IT-78",
+          "display": "Calabria"
+        }, {
+          "system": "urn:iso:std:iso:3166:-2",
+          "code": "IT-65",
+          "display": "Abruzzo"
+        } ]
+      } ],
+      "description": "A full description of how the study is being conducted.",
+      "enrollment": [ {
+        "reference": "Group/1",
+		"display": "Group-1"
+      } ],
+      "period": {
+        "start": "2020-07-01",
+        "end": "2022-06-30"
+      },
+      "site": [ {
+        "reference": "Location/1",
+		"display": "Location-1"
+      } ],
+  "extension": [ 
+  {
+        "url": "http://interopehrate.eu/fhir/StructureDefinition/EnrollmentPeriodExtension-IEHR",
+        "valuePeriod": {
+          "start": "2020-02-01",
+          "end": "2020-07-01"
+        }
+      },{
+    "url": "http://interopehrate.eu/fhir/StructureDefinition/DataSetDefinitionExtension-IEHR",
+    "extension": [ {
+      "url": "DataRequirement",
+      "valueDataRequirement": {
+        "type": "Observation",
+        "codeFilter": [ {
+          "path": "category",
+          "code": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+            "code": "vital-signs",
+            "display": "Vital Signs"
+          } ]
+        }, {
+          "path": "code",
+          "code": [ {
+            "system": "http://loinc.org",
+            "code": "29463-7",
+            "display": "Body weight"
+          } ]
+        } ],
+        "dateFilter": [ {
+          "path": "effectivePeriod",
+          "valuePeriod": {
+            "start": "2015-09-14",
+            "end": "2020-09-14"
+          }
+        } ]
+      }
+    }, {
+      "url": "DataRequirement",
+      "valueDataRequirement": {
+        "type": "Medication",
+        "codeFilter": [ {
+          "path": "code",
+          "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips"
+        } ],
+        "dateFilter": [ {
+          "path": "effectivePeriod",
+          "valuePeriod": {
+            "start": "2015-09-14",
+            "end": "2020-09-14"
+          }
+        } ]
+      }
+    }, {
+      "url": "DataRequirement",
+      "valueDataRequirement": {
+        "type": "Observation",
+        "codeFilter": [ {
+          "path": "category",
+          "code": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+            "code": "vital-signs",
+            "display": "Vital Signs"
+          } ]
+        }, {
+          "path": "code",
+          "code": [ {
+            "system": "http://loinc.org",
+            "code": "2708-6",
+            "display": "Oxygen saturation in Arterial blood"
+          } ]
+        } ],
+        "dateFilter": [ {
+          "path": "effectivePeriod",
+          "valuePeriod": {
+            "start": "2015-09-14",
+            "end": "2020-09-14"
+          }
+        } ]
+      }
+    }, {
+      "url": "DataRequirement",
+      "valueDataRequirement": {
+		"extension": [ {
+              "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+              "valueTiming": {
+                "repeat": {
+                  "frequency": 2,
+                  "period": 1,
+                  "periodUnit": "d"
+                }
+              }
+            } ],
+        "type": "Observation",
+        "codeFilter": [ {
+          "path": "category",
+          "code": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+            "code": "vital-signs",
+            "display": "Vital Signs"
+          } ]
+        }, {
+          "path": "code",
+          "code": [ {
+            "system": "http://loinc.org",
+            "code": "29463-7",
+            "display": "Body weight"
+          } ]
+        } ],
+        "dateFilter": [ {
+          "path": "effectivePeriod",
+          "valuePeriod": {
+            "start": "2020-09-14",
+            "end": "2022-09-14"
+          }
+        }]
+      }
+    } ]
+  } ]
+ }

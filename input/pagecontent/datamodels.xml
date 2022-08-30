@@ -1,0 +1,649 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+    <p>
+        The InteropEHRate information model that allows for the exchange of data in the context of a research project takes into account the main aspects of the research protocol within different information categories.
+    </p>
+    <table border="1" style="border-collapse:collapse; width:100%;" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.1: Categories of information represented by the RDD domain model</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Information category</th>
+            <th style="color:white;background-color: #548dd4;">Requirement </th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;"><u>un</u>structured / human readable definition of the research project</td>
+            <td>Description of the research project containing human readable dataset definitions, enrollment and exit criteria, definitions of enrollment and data collection periods, in-phone anonymization requirements, as well as metadata describing the research, in a way understandable for citizens</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">structured / machine processable definition of the research project</td>
+            <td>Definition of the research project containing structured dataset definitions, enrollment and exit criteria, definitions of enrollment and data collection periods, in-phone anonymization requirements, as well as metadata describing the research</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">data security and access control</td>
+            <td>Approval / Consent of the citizen to participate in the study </td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">data set results</td>
+            <td>Aggregated and pseudonymized or anonymized citizen’s medical data</td>
+        </tr>
+    </table>
+    <p>
+        The following domain model outlines these four aspects from a high-level perspective.
+        The model uses elements from the [FHIR] standard, which enables direct interoperability with the FHIR-based S-EHR data structures.
+    </p>
+    <figure>
+        <img height="600" src="RDD_domain_model.png" alt="Domain model diagram of the RDD"/>
+        <figcaption>Fig. 4.1: Members of the ResearchStudy resource</figcaption>
+    </figure>
+    <br/>
+    <a name="reasearchdef"> </a>
+    <h3>Research Definition Document</h3>
+    <p>
+        The Research Definition Document describes the rules for participating in a research study.
+        It consists of several domain classes which are described in the following sections.
+    </p>
+    <p>Further information on the realization can be found at <a href="instructions.html#rdd">Instructions - Research Definition Document (RDD)</a>.</p>
+
+    <a name="reasearchstudy"> </a>
+    <h3><a href="StructureDefinition-ResearchStudy-IEHR.html">Research Study</a></h3>
+    <p>
+        This domain class represents essential information of a research study in which S-EHR users can participate.
+        The aims of a research study are to improve or develop new methods of health care by using scientific methods.
+        The following table describes the relevant attributes.
+    </p>
+
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.2: Members of the ResearchStudy resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">id</td>
+            <td>Logical identifier of the research study. Once assigned, it never changes.</td>
+            <td>1..1</td>
+            <td>string</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">identifier</td>
+            <td>Unique identifier of the research study. This is a business identifier, not a resource identifier.</td>
+            <td>1..*</td>
+            <td>Identifier</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">text</td>
+            <td>Human-readable summary of the resource.</td>
+            <td>1..1</td>
+            <td><a href="StructureDefinition-Narrative-IEHR.html">Narrative-IEHR</a></td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">title</td>
+            <td>Title of the research study.</td>
+            <td>1</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">status</td>
+            <td>Status of the research study.</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td><a href="http://hl7.org/fhir/ValueSet/research-study-status">ResearchStudyStatus</a></td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">primaryPurposeType</td>
+            <td>Purpose of the research study.</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td><a href="http://hl7.org/fhir/ValueSet/research-study-prim-purp-type">ResearchStudyPrimaryPurposeType</a></td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">phase</td>
+            <td>Phase of the study if part of another study.</td>
+            <td>0..1</td>
+            <td>Coded Value</td>
+            <td><a href="http://hl7.org/fhir/ValueSet/research-study-phase">ResearchStudyPhase</a></td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">contact</td>
+            <td>Contact information to research study.</td>
+            <td>1..*</td>
+            <td>Reference (Complex Data Type representing contact details)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">description</td>
+            <td>Human-readable description (including data retention period, purpose of research and description of usage restrictions of data within the research protocol, description of the research centre that will coordinate the specific study and of the specific research centre (Local Research Centre) that will receive and process the shared health data).</td>
+            <td>0..1</td>
+            <td>markdown</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">period</td>
+            <td>Planned duration of the research or study as a whole, incorporating both the enrollment phase and the data delivery phase, as well as possible study specific time periods.</td>
+            <td>1</td>
+            <td>Period</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">site (participating Research Centers)</td>
+            <td>List of Research Centres (and relative regions) that a patient participating in the study can select as a Reference Research Centre for the specific described study.</td>
+            <td>1..*</td>
+            <td>Reference(<a href="StructureDefinition-Location-ReferenceResearchCenter-IEHR.html">ResearchLocation</a>)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">enrollment (cohort)</td>
+            <td>A list of planned citizen cohorts, incorporating the enrollment criteria for the evaluation of candidates. </td>
+            <td>1..*</td>
+            <td>Reference(<a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort-IEHR</a>)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension:RequestedAnonymizationType</td>
+            <td>-</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td><a href="ValueSet-AnonymizationValueSet-IEHR.html">AnonymizationValueSet</a>(anonymization, pseudonymization)</td>
+        </tr>
+<!--
+        <tr>
+            <td style="color:white;background-color: #548dd4;">research Subjects</td>
+            <td>This is a link to structured and anonymized data of all participating research subjects (citizens).</td>
+            <td>0..*</td>
+            <td>Reference (Research Subject)</td>
+            <td>-</td>
+        </tr>
+-->
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension: DataSetDefinition</td>
+            <td>This is a link to the data selection</td>
+            <td>1..*</td>
+            <td><a href="StructureDefinition-DataSetDefinitionExtension-IEHR.html">DataSetDefinition - IEHR</a> referring to <a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirement - IEHR</a></td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension: EnrollmentPeriod</td>
+            <td>The period during which new patients can enroll in the study</td>
+            <td>1</td>
+            <td>Period</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension:Questionnaire</td>
+            <td>This is a link to questionnaires with additional informations</td>
+            <td>0..*</td>
+            <td><a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension - IEHR</a> including a mandatory deadline (type dateTime), reminder frequency (type Timing) and a Reference(<a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire - IEHR</a>) </td>
+            <td>-</td>
+        </tr>
+    </table>
+    <p>
+        In addition to the general metadata, the domain class Research Study includes references to the domain classes Research Center, Cohort, Data Set Definition and Research Subject.
+    </p>
+
+
+    <a name="cohort"> </a>
+    <h3><a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort</a></h3>
+    <p>
+        The EnrollmentLogic association enables a structured or unstructured definition of the actual query.
+        The enrollment logic describes different enrollment criteria, or exit criteria if negated, for a patient’s participation in a research study,
+        including e.g. minimum or maximum values for patient demographic data, the presence or absence of a certain diagnosis within a certain time period, a patient’s drug therapy within a certain time frame,
+        and many more.
+    </p>
+    <p><b>Usage of structured data set description Citizen’s characteristics:</b></p>
+    <p>
+        A structured description of the enrollment criteria based on a common vocabulary is supported.
+        The following table lists the features of this structured characteristic description.
+    </p>
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.4: Members of the Citizen’s Characteristics resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">kind of characteristic</td>
+            <td>Selection of the desired type of characteristic defining an enrollment criterion, based on a common vocabulary / Value Set, e.g. diagnosis.</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td>to be defined, shall contain items such as age, diagnosis, medication, gender, etc.</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">Value</td>
+            <td>Value of the characteristic according to and depending on the kind of characteristic, e.g. a specific code of a diagnosis or a description.</td>
+            <td>1</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">exclude</td>
+            <td>Specifies whether the characteristic is an inclusion or exclusion criterion.</td>
+            <td>1</td>
+            <td>Boolean</td>
+            <td>true,false</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">period</td>
+            <td>Specifies a date or period of the characteristic’s existence or application, e.g. when a diagnosis has been raised.</td>
+            <td>0..1</td>
+            <td>Date Time</td>
+            <td>-</td>
+        </tr>
+    </table>
+
+
+    <a name="dataSetDescription"> </a>
+    <h3><a href="StructureDefinition-DataSetDefinitionExtension-IEHR.html">Data Set Definition</a></h3>
+    <p>
+        Aligned with the enrollment criteria, the data set definition allows for a structured or unstructured definition of the actual query.
+        The data set definition defines which data sets and data items of the citizen cohorts shall be requested and delivered to the researcher.
+        The data set definition is therefore only applicable for the participating citizens of a cohort of the research study.
+    </p>
+    <p>See <a href="instructions.html#dataReq">Instructions - Customized Data Requests</a>, too.</p>
+
+    <br/>
+    <a name="structuredData"> </a>
+    <h4>Usage of structured data set description Data characteristics:</h4>
+    <p>
+        A structured description of the requested data items based on a common vocabulary is supported.
+        The following table lists the features of this structured characteristic description.
+    </p>
+
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.6: Members of the DataSetDefinition resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">url</td>
+            <td>Url that defines the DataSetDefinition</td>
+            <td>1</td>
+            <td>uri</td>
+            <td>fixed:"http://interopehrate.eu/fhir/StructureDefinition/DataSetDefinitionExtension-IEHR"</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;"><a href="#tableDataRequirementExtension" style="color:white"> extension:DataRequirement </a></td>
+            <td>Extensions that contain the dataRequierements</td>
+            <td>1..*</td>
+            <td>Extension</td>
+            <td>-</td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <table id="tableDataRequirementExtension" border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.6.1: extension:DataRequirement</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">url</td>
+            <td>Url that defines this extension</td>
+            <td>1</td>
+            <td>uri</td>
+            <td>fixed:"DataRequirement"</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">value</td>
+            <td>DataRequirement that characterise the data</td>
+            <td>1</td>
+            <td><a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirement - IEHR</a></td>
+            <td>-</td>
+        </tr>
+    </table>
+
+    <br/>
+    <!-- -->
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.7: Members of the <a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirement - IEHR</a> resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;"><a href="#tableFunctionExtension" style="color:white;">extension:FunctionExtension-IEHR</a></td>
+            <td>Used to describe how requested data should be processed.<br/>See <a href="instructions.html#DataReqExtFunction">Instructions - Data Processing Instructions</a>.</td>
+            <td>0..1</td>
+            <td>Complex</td>
+            <td>fixed url:"http://interopehrate.eu/fhir/StructureDefinition/FunctionExtension-IEHR"</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension:FrequencyExtension-IEHR</td>
+            <td>The Frequency in which the data should be provided.<br/>See <a href="instructions.html#DataReqExtFrequency">Instructions - Data Transmission Frequency</a>.</td>
+            <td>0..1</td>
+            <td>Timing</td>
+            <td>fixed url:"http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR"</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">codeFilter.code</td>
+            <td>Code filters specify additional constraints on the data, specifying the Value Set of interest in a particular element of the data.</td>
+            <td>0..*</td>
+            <td><a href="StructureDefinition-Coding-IEHR.html">Coding - IEHR</a></td>
+            <td><a href="ValueSet-CodingOperator-IEHR.html">ValueSet CodingOperator - IEHR</a> used in Coding-IEHR.</td>
+        </tr>
+    </table>
+
+    <br/>
+    <!-- -->
+    <table id="tableFunctionExtension" border="1" style="border-collapse:collapse; width:100%;" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.7.1: extension:<a href="StructureDefinition-FunctionExtension-IEHR.html">FunctionExtension - IEHR</a></caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;"><a href="#tableNameExtension" style="color:white;">extension:Name</a></td>
+            <td>Name of the function, bond to a corresponding value set containing the available function codes.</td>
+            <td>1</td>
+            <td>Extension</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;"><a href="#tableParameterExtension" style="color:white;">extension:Parameter</a></td>
+            <td>Parameter of the function. The use and allowed cardinality of the parameter extension changes depending on the name of the called function.</td>
+            <td>0..*</td>
+            <td>Extension</td>
+            <td>-</td>
+        </tr>
+    </table>
+    <br/>
+
+    <!-- -->
+    <table id="tableNameExtension" border="1" style="border-collapse:collapse; width:100%;" bordercolor="#548dd4">
+    <caption style="caption-side:top; text-align:left">Table 4.7.2: extension:Name</caption>
+    <tr>
+        <th style="color:white;background-color: #548dd4;">Attribute</th>
+        <th style="color:white;background-color: #548dd4;">Description </th>
+        <th style="color:white;background-color: #548dd4;">Cardinality</th>
+        <th style="color:white;background-color: #548dd4;">Data type </th>
+        <th style="color:white;background-color: #548dd4;">Value Set</th>
+    </tr>
+    <tr>
+        <td style="color:white;background-color: #548dd4;">url</td>
+        <td>Url that defines this extension</td>
+        <td>1</td>
+        <td>uri</td>
+        <td>fixed url:"Name"</td>
+    </tr>
+    <tr>
+        <td style="color:white;background-color: #548dd4;">value[x]</td>
+        <td>The actual value in form of a code form the FunctionCodesValueSet-IEHR.</td>
+        <td>1</td>
+        <td>Coding</td>
+        <td><a href="ValueSet-FunctionCodesValueSet-IEHR.html">ValueSet FunctionCodes - IEHR</a></td>
+    </tr>
+    </table>
+    <!-- -->
+    <table id="tableParameterExtension" border="1" style="border-collapse:collapse; width:100%;" bordercolor="#548dd4">
+    <caption style="caption-side:top; text-align:left">Table 4.7.3: extension:Parameter</caption>
+    <tr>
+        <th style="color:white;background-color: #548dd4;">Attribute</th>
+        <th style="color:white;background-color: #548dd4;">Description </th>
+        <th style="color:white;background-color: #548dd4;">Cardinality</th>
+        <th style="color:white;background-color: #548dd4;">Data type </th>
+        <th style="color:white;background-color: #548dd4;">Value Set</th>
+    </tr>
+    <tr>
+        <td style="color:white;background-color: #548dd4;">url</td>
+        <td>Url that defines this extension</td>
+        <td>1</td>
+        <td>uri</td>
+        <td>fixed url:"Parameter"</td>
+    </tr>
+    <tr>
+        <td style="color:white;background-color: #548dd4;">value[x]</td>
+        <td>The actual value of the parameter, depending on the name of the called function. E.g. The <i>count</i> function returns only the number of resources, that fulfill the requirement. This function does not need any parameters and constrain extIEHR-2 enforces this. </td>
+        <td>1</td>
+        <td>string</td>
+        <td>-</td>
+    </tr>
+    </table>
+
+<!--
+    <a name="citizensCondsent"> </a>
+    <h3>Citizen’s Consent</h3>
+    <p>
+        A citizen must sign a consent to participate in a specific research study.
+        The consent can be signed on paper and must also be represented in an electronic and structured way in order to support machine processing of the consent.
+    </p>
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.9: Members of the Consent resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">id</td>
+            <td>Unique identifier of the consent.</td>
+            <td>1..*</td>
+            <td>Identifier</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">status</td>
+            <td>Status of the consent.</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td>Value Set <a href="http://hl7.org/fhir/ValueSet/consent-state-codes">http://hl7.org/fhir/ValueSet/consent-state-codes</a></td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">scope</td>
+            <td>Area which the consent addresses.</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td>Value Set <a href="http://hl7.org/fhir/ValueSet/consent-scope">http://hl7.org/fhir/ValueSet/consent-scope</a> <br/> fixed: Research</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">category</td>
+            <td>Category of the consent.</td>
+            <td>1</td>
+            <td>Coded Value</td>
+            <td><a href="http://terminology.hl7.org/CodeSystem/consentcategorycodes">http://terminology.hl7.org/CodeSystem/consentcategorycodes</a> <br/>
+                examples: <br/>
+                rsreid: Re-identifiable Information Access <br/>
+                rsdid: De-identified Information Access</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">creationTime</td>
+            <td>Date and time of the creation of the consent.</td>
+            <td>1</td>
+            <td>Datetime</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">structuredPolicies</td>
+            <td>Attachment of a structured consent document (for example XACML document without identifying information).</td>
+            <td>1</td>
+            <td>Attachment</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">referenceResearchCenter</td>
+            <td>Custodian of the consent.</td>
+            <td>1</td>
+            <td>Reference (Reference Research Center)</td>
+            <td>-</td>
+        </tr>
+    </table>
+-->
+
+    <a name="researchCenter"> </a>
+    <h3><a href="StructureDefinition-Location-ReferenceResearchCenter-IEHR.html">Reference Research Center</a></h3>
+    <p>
+        A research center is an organization participating in the research study.
+        The relevant attributes of the domain class Reference Research Center are listed below.
+    </p>
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.10: Members of the <a href="StructureDefinition-Location-ReferenceResearchCenter-IEHR.html">ReferenceResearchCenter-IEHR</a> resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">id</td>
+            <td>Unique identifier of the reference research center.</td>
+            <td>0..*</td>
+            <td>Identifier</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">name</td>
+            <td>Name of the reference research center.</td>
+            <td>1</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">speciality</td>
+            <td>Speciality of the reference research center.</td>
+            <td>1..*</td>
+            <td>Coded Value</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">address</td>
+            <td>Address information of the reference research center.</td>
+            <td>1</td>
+            <td>Complex Data Type representing address information</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">telecom</td>
+            <td>Contact information of the reference research center.</td>
+            <td>1</td>
+            <td>Reference (Complex Data Type representing contact details)</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">endpoint</td>
+            <td>Service Endpoint (research protocol) of the reference research center.</td>
+            <td>1</td>
+            <td>Reference(Endpoint)</td>
+            <td>-</td>
+        </tr>
+    </table>
+
+
+    <a name="RDDQuestionnaire"> </a>
+    <h3><a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a></h3>
+    <p>
+        The QuestionnaireExtension-IEHR (formerly RDDQuestionnaire) contains a questionnaire that the patient has to complete. It additionally defines the deadline for the questionnaire and how frequently the patient should be reminded to complete it.
+        The relevant attributes of the domain class RDDQuestionnaire are listed below.
+    </p>
+
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.11: Members of the <a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension-IEHR</a> resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">url</td>
+            <td>Url that defines this extension</td>
+            <td>1</td>
+            <td>uri</td>
+            <td>fixed:"http://interopehrate.eu/fhir/StructureDefinition/QuestionnaireExtension-IEHR"</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension: Questionnaire</td>
+            <td>Reference to the questionnaire</td>
+            <td>1</td>
+            <td>Reference (Questionnaire)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension: Deadline</td>
+            <td>The deadline for the questionnaire.</td>
+            <td>1</td>
+            <td>DateTime</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension: ReminderFrequency</td>
+            <td>Defines how often the patient should be remided to complete the questionnaire.</td>
+            <td>1</td>
+            <td>Timing</td>
+            <td>-</td>
+        </tr>
+    </table>
+    <br/>
+    <table border="1" style="border-collapse:collapse; width:100%" bordercolor="#548dd4">
+        <caption style="caption-side:top; text-align:left">Table 4.11: Members of the <a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a> resource</caption>
+        <tr>
+            <th style="color:white;background-color: #548dd4;">Attribute</th>
+            <th style="color:white;background-color: #548dd4;">Description </th>
+            <th style="color:white;background-color: #548dd4;">Cardinality</th>
+            <th style="color:white;background-color: #548dd4;">Data type </th>
+            <th style="color:white;background-color: #548dd4;">Value Set</th>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">id</td>
+            <td></td>
+            <td>1</td>
+            <td>string</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">extension: CodeSystemExtension-IEHR</td>
+            <td>Reference to the questionnaire</td>
+            <td>1</td>
+            <td>Reference (CodeSystemQuestionnaire-IEHR)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td style="color:white;background-color: #548dd4;">item</td>
+            <td>A question of the questionnaire, represented as a code from the referred CodeSystem.</td>
+            <td>0..*</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+
+    </table>
+</div>

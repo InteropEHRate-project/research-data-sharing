@@ -1,0 +1,23 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/CodeableConcept-IEHR",
+  "name": "CodeableConceptIEHR",
+  "title": "CodeableConcept-IEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "CodeableConcept",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/CodeableConcept",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "CodeableConcept.coding",
+      "path": "CodeableConcept.coding",
+      "type": [ {
+        "code": "Coding",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Coding-IEHR" ]
+      } ]
+    } ]
+  }
+}

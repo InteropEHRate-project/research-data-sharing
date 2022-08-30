@@ -1,0 +1,41 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+
+    <a name="origLanguage"></a>
+    <h3>Original Language</h3>
+    <p>
+        Each <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a> MUST specify the original language of the content in the language attribute and the content of the attributes must be in this language.
+    </p>
+
+    <a name="translationRS"></a>
+    <h3>Translation Instructions for the <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a></h3>
+    <p>
+        Only one RDD is published by the principal investigator and this RDD contains the content in all necessary languages.
+    </p>
+
+    <p>Translation of structured data</p>
+    <ul>
+        <li> Structured data is translated directly inside the attributes using the <a href="http://hl7.org/fhir/R4/extension-translation.html">Translation Extension</a> </li>
+        <li> For each attribute there should be one translation extension for each additional language</li>
+    </ul>
+
+    <p>Translation of <u>un</u>structured data</p>
+    <ul>
+        <li>Unstructured data is contained in a pdf and added in the ResearchStudy.relatedArtifact attribute</li>
+        <li>Each pdf contain information in only one language and to translate the pdf a new file in the other language is created and added to the RDD</li>
+    </ul>
+    <p>As such the RDD references one pdf for each necessary language in the ResearchStudy.relatedArtifact</p>
+
+    <a name="translationQuestionnaire"></a>
+    <h3>Translation Instructions for the <a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a></h3>
+    <p>
+        The questionnaire itself should only contain codes and no text.
+        Thus, the questionnaire does not need to be translated, instead the translation is part of the CodeSystem referenced by the questionnaire.
+    </p>
+    <p>Handling of CodeSystems main attributes in a translation</p>
+    <ul>
+        <li>The original language of the system is described in the CodeSystems mandatory language attribute</li>
+        <li>The representation of a code in the original language is specified in concept.display </li>
+        <li>Translations are added as concept.designation attributes, with the concept.designation.value attribute containing the representation of the code in the language specified in the concept.designation.language attribute</li>
+    </ul>
+
+</div>

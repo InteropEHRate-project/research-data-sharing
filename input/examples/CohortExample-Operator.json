@@ -1,0 +1,35 @@
+{
+  "resourceType": "Group",
+  "id": "93415",
+  "meta": {
+    "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Group-Cohort-IEHR" ]
+  },
+  "type": "person",
+  "actual": false,
+  "name": "Cohort 2",
+  "quantity": 1000,
+  "characteristic": [ {
+    "code": {
+      "coding": [ {
+        "system": "http://interopehrate.eu/fhir/CodeSystem/GroupCharacteristic-Code",
+        "code": "observation",
+        "display": "Observation"
+      } ]
+    },
+    "valueCodeableConcept": {
+      "coding": [ {
+        "extension": [ {
+          "url": "http://interopehrate.eu/fhir/StructureDefinition/Operator-Extension-IEHR",
+          "valueCoding": {
+            "system": "http://interopehrate.eu/fhir/CodeSystem/CodingOperator-IEHR",
+            "code": "startsWith",
+            "display": "StartsWith"
+          }
+        } ],
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "display": "F"
+      } ]
+    },
+    "exclude": false
+  } ]
+}

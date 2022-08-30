@@ -1,0 +1,11 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<a name="notesParameter"> </a>
+<h3>Notes about Group.characterstic.valueCodeableConcept</h3>
+<p>
+If a CodeableConcept with multiple Codings is used to represent the value of the characteristic, the Codings are to be interpreted as connected with an OR. <br/>
+So, if the type is Medication and the CodeableConcept contains multiple Codings for different medications, any person that takes at least one of the medications has this characterstic. <br/>
+This interpretation allows for characteristics to specify, that any participant should have one of a list of items if the study is more general. <br/>
+For conditions this could be a list of different heart conditions, if the study is about heart conditions in general, or a list of medication if the study is about a group of drugs with a common active incredient.
+</p>
+
+</div>

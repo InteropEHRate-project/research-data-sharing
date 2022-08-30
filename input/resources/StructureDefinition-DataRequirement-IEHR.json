@@ -1,0 +1,63 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/DataRequirement-IEHR",
+  "name": "DataRequirementWithFrequency",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "DataRequirement",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DataRequirement",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "DataRequirement",
+      "path": "DataRequirement"
+    }, {
+      "id": "DataRequirement.extension",
+      "path": "DataRequirement.extension",
+      "slicing": {
+        "discriminator": [ {
+          "type": "value",
+          "path": "url"
+        } ],
+        "rules": "open"
+      }
+    }, {
+      "id": "DataRequirement.extension:Function",
+      "path": "DataRequirement.extension",
+      "sliceName": "Function",
+      "min": 0,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/FunctionExtension-IEHR" ]
+      } ]
+    }, {
+      "id": "DataRequirement.extension:Function.url",
+      "path": "DataRequirement.extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/FunctionExtension-IEHR"
+    }, {
+      "id": "DataRequirement.extension:Frequency",
+      "path": "DataRequirement.extension",
+      "sliceName": "Frequency",
+      "min": 0,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR" ]
+      } ]
+    }, {
+      "id": "DataRequirement.extension:Frequency.url",
+      "path": "DataRequirement.extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR"
+    }, {
+      "id": "DataRequirement.codeFilter.code",
+      "path": "DataRequirement.codeFilter.code",
+      "type": [ {
+        "code": "Coding",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Coding-IEHR" ]
+      } ]
+    } ]
+  }
+}

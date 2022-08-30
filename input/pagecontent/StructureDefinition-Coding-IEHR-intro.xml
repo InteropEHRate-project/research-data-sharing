@@ -1,0 +1,21 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<a name="notesOperator"> </a>
+<h3>Notes about the Operator extension</h3>
+<p>
+The Operator extension is optional in this profile and the default value is exact. <br/>
+So if the extension is missing in a Coding-IEHR the meaning is the same as if the extension was present with the code exact.<br/>
+If the Operator extension is missing or the value is exact, the coding is to be used as normal with the system in the system attribute, the relevant code in the code attribute and an optional display in the display attribute.<br/>
+However, if the Operator extension has the value startsWith, the code attribute should remain empty, and the prefix should be in the display attribute. The reason for this is that the validator automatically checks all codes and since most prefixes are not valid codes on their own it will cause an error during validation if the prefix is in the code attribute.
+</p>
+<a name="notedAutoGen"> </a>
+<h3>Notes about the AutomaticallyGenerated extension</h3>
+<p>
+The AutomaticallyGenerated extension is optional in this profile and the default value is false. <br/>
+So if the extension is missing in a Coding-IEHR the meaning is the same as if the extension was present with the value false.<br/>
+If the AutomaticallyGenerated extension is missing or the value is false, the coding was added by the creator of the resource and can be assumed to be precise.<br/>
+However, if the AutomaticallyGenerated extension has the value true, the code was added automatically by an translation service, that translated the original code into the code provided by the coding. <br/>
+This is necessary, if the author provided a code in an local CodeSystem and the translation service has to translate the code into the system required by the relevant IEHR profile to make the resource pass validation. <br/>
+In that case this extension must be added with the value true, to alert any readers, that this code was automatically provided and there is no guarantee, that it is a perfect match for the original code. <br/>
+If a translated code is used, the original code must always be provided as well and for critical operations it might be necessary, to use the original and query the meaning of the code from the author to ensure, that there is no misunderstanding.
+</p>
+</div>

@@ -1,0 +1,142 @@
+<div xmlns="http://www.w3.org/1999/xhtml">
+<p> <b>Generated Narrative </b></p>
+  {%if ResearchStudy.id.exists()%}
+  <p> <b>id:</b> {{ResearchStudy.id}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.meta.profile.exists()%}
+  <p> <b>profile:</b> {{ResearchStudy.meta.profile}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.identifier.exists()%}
+  <p> <b>identifier:</b></p>
+  {%endif%}
+  {%for ident in ResearchStudy.identifier%}
+	<p style="text-indent:10px;"> id: {{ident.value}}</p>
+  {%endfor%}
+  
+  {%if ResearchStudy.title.exists()%}
+  <p> <b>title:</b> {{ResearchStudy.title}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.status.exists()%}
+  <p> <b>status:</b> {{ResearchStudy.status}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.primaryPurposeType.exists()%}
+  <p> <b>primaryPurposeType:</b> {{ResearchStudy.primaryPurposeType.coding.display}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.condition.exists()%}
+  <p> <b>condition:</b> {{ResearchStudy.condition.coding.display}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.contact.exists()%}
+  <p> <b>contact:</b> {{ResearchStudy.contact.name}}
+    {%for telcom in ResearchStudy.contact.telecom%}
+; {{telcom.system}}:{{telcom.value}}
+    {%endfor%}
+	</p>
+  {%endif%}
+  
+  {%if ResearchStudy.location.exists()%}
+  <p> <b>location:</b> {{ResearchStudy.location.coding[0].display}}</p>
+  {%endif%}
+  
+  {%if ResearchStudy.description.exists()%}
+  <p> <b>description:</b> {{ResearchStudy.description}}</p>
+  {%endif%}
+  
+  
+  {%if ResearchStudy.enrollment.exists()%}
+    {%if ResearchStudy.enrollment.display.exists() %}
+		<p> <b>enrollment:</b> <a href= "{{ResearchStudy.enrollment.display}}.html">{{ResearchStudy.enrollment.reference}} </a> </p>
+  	{% else %}
+		<p><b>enrollment:</b>{{ResearchStudy.enrollment.reference}}</p>
+	{% endif %}
+  {%endif%}
+  
+  {%if ResearchStudy.period.exists()%}
+  <p> <b>period:</b> {{ResearchStudy.period.start}} --> {{ResearchStudy.period.end}}</p>
+  {%endif%}
+
+  {%if ResearchStudy.site.exists()%}
+	{% if ResearchStudy.site.display.exists() %}
+		<p><b>site:</b> <a href="{{ResearchStudy.site.display}}.html">{{ResearchStudy.site.reference}}</a></p>
+	{% else %}
+		<p><b>site:</b>{{ResearchStudy.site.reference}}</p>
+	{% endif %}
+  {%endif%}
+   
+  {%if ResearchStudy.extension.exists()%}
+  
+		{% for outerExtension in ResearchStudy.extension%}
+			{% if outerExtension.extension.exists()%}
+				<p> <b>DataSetDefinition </b></p>
+				{%for innerextension in ResearchStudy.extension.extension%}
+				
+				<div style="background-color: whitesmoke;">
+				<p style="text-indent:10px;"> <b>DataRequirement </b></p>
+					{%if innerextension.value.type.exists()%}
+						<p style="text-indent:20px;"> <b>Type :</b> {{innerextension.value.type}}</p>
+					{%endif%}
+				{%if innerextension.value.subject.exists()%}
+					<p style="text-indent:20px;"> <b> Subject :</b> {{innerextension.value.subject}}</p>
+				{%endif%}
+					{%for codeFilter in innerextension.value.codeFilter%}
+							<p style="text-indent:20px;"> <b> CodeFilter </b> </p>
+				 			{%if codeFilter.path.exists()%}
+								<p style="text-indent:30px;"><b> Path :</b> {{codeFilter.path}}</p>
+							{%endif%}
+							{%if codeFilter.valueSet.exists()%}
+								<p style="text-indent:30px;"> <b>ValueSet :</b> {{codeFilter.valueSet}}</p>
+							{%endif%}
+							{%for code in codeFilter.code%}
+								<p style="text-indent:30px;"> <b>Coding : </b></p>
+								{%if code.code.exists()%}
+									<p style="text-indent:40px;"> <b>Code :</b> {{code.code}}</p>
+								{%endif%}	
+								{%if code.system.exists()%}
+									<p style="text-indent:40px;"> <b>System :</b> {{code.system}}</p>
+								{%endif%}								
+								{%if code.display.exists()%}
+									<p style="text-indent:40px;"> <b>Display :</b> {{code.display}}</p>
+								{%endif%}
+							{%endfor%}
+					{%endfor%}
+				 
+				 
+					{%for dateFilter in innerextension.value.dateFilter%}
+							<p style="text-indent:20px;"> <b> DateFilter </b> </p>
+				 			{%if dateFilter.path.exists()%}
+								<p style="text-indent:30px;"><b> Path :</b> {{dateFilter.path}}</p>
+							{%endif%}
+							{%if dateFilter.value.start.exists()%}
+								<p style="text-indent:30px;"><b> {{dateFilter.path}}:</b> {{dateFilter.value.start}} --> {{dateFilter.value.end}}</p>
+							{%else%}
+								<p style="text-indent:30px;"><b> {{dateFilter.path}}:</b> {{dateFilter.value}}</p>
+							{%endif%}
+					{%endfor%}
+					
+					{%if innerextension.value.extension.exists()%}
+					{%for timing in innerextension.value.extension.value%}
+						{%for repeatInstance in timing.repeat%}
+							<p style="text-indent:20px;"><b> Frequeny: </b> {{repeatInstance.frequency}} per {{repeatInstance.period}} {{repeatInstance.periodUnit}} </p>
+						{%endfor%}
+					{%endfor%}
+					{%endif%}
+				 			 
+				</div>
+				{%endfor%}
+		{% endif %}	
+				
+	    {%if outerExtension.value.start.exists()%}
+			<p><b> enrollmentperiod :</b> {{outerExtension.value.start}} --> {{outerExtension.value.end}}</p>
+		{% endif %}
+		{%if outerExtension.value.display.exists()%}
+			<p><b> anonymizationtype :</b> {{outerExtension.value.display}}</p>
+		{% endif %}
+		{%endfor%}
+
+  {%endif%}
+</div>

@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "url": "http://interopehrate.eu/fhir/ValueSet/FunctionCodesValueSet-IEHR",
+  "name": "FunctionCodesValueSet",
+  "title": "Function Codes ValueSet",
+  "status": "draft",
+  "description": "This ValueSet contains the available function codes for the FunctionExtension",
+  "compose": {
+    "include": [ {
+      "system": "http://interopehrate.eu/fhir/CodeSystem/Function-Codes-IEHR"
+    } ]
+  }
+}

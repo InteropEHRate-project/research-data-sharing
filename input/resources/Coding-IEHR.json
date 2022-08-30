@@ -1,0 +1,50 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/Coding-IEHR",
+  "name": "CodingIEHR",
+  "title": "Coding-IEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Coding",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Coding",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Coding",
+      "path": "Coding",
+      "short": "Coding"
+    }, {
+      "id": "Coding.extension",
+      "path": "Coding.extension",
+      "slicing": {
+        "discriminator": [ {
+          "type": "value",
+          "path": "url"
+        } ],
+        "rules": "open"
+      }
+    }, {
+      "id": "Coding.extension:Operator",
+      "path": "Coding.extension",
+      "sliceName": "Operator",
+      "min": 0,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Operator-Extension-IEHR" ]
+      } ]
+    }, {
+      "id": "Coding.extension:AutomaticallyGenerated",
+      "path": "Coding.extension",
+      "sliceName": "AutomaticallyGenerated",
+      "min": 0,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/AutomaticallyGenerated-Extension-IEHR" ]
+      } ]
+    } ]
+  }
+}

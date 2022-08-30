@@ -1,0 +1,65 @@
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li><a href="index.html">RDS Introduction</a></li>
+  <li><a href="toc.html">Table of Contents</a></li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Research Data Sharing Background<b class="caret">
+      </b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="protocol_overview.html">Protocol Overview</a>
+      </li>
+      <li>
+        <a href="architecture.html">Architecture and Interfaces</a>
+      </li>
+      <li>
+        <a href="datamodels.html">DataModels</a>
+      </li>
+    </ul>
+  </li>
+  
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Usage Instructions<b class="caret">
+      </b>
+    </a>
+    <ul class="dropdown-menu">
+	  <li>
+        <a href="instructions.html">Profile Instructions</a>
+      </li>
+	  <li>
+        <a href="translation.html">Translation Instructions</a>
+      </li>	  
+    </ul>
+  </li>
+  
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Specification<b class="caret">
+      </b>
+    </a>
+    <ul class="dropdown-menu">  
+	  <li>
+        <a href="profiles.html">Profiles</a>
+      </li>
+	  	  <li>
+        <a href="extensions.html">Extensions</a>
+      </li>
+	  	  <li>
+        <a href="examples.html">Examples</a>
+      </li>
+    </ul>
+  </li>
+  <li><a href="artifacts.html">Artifact Index</a></li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Support<b class="caret">
+      </b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a target="_blank" href="{{site.data.fhir.path}}index.html">FHIR Spec <img src="external.png" style="text-align: baseline"/></a>
+      </li>
+      <li>
+        <a href="downloads.html">Downloads</a>
+      </li>
+    </ul>
+  </li>
+</ul>      

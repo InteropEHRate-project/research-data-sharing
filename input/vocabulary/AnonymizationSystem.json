@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "AnonymizationType-IEHR",
+  "url": "http://interopehrate.eu/fhir/CodeSystem/AnonymizationType-IEHR",
+  "name": "AnonymizationType",
+  "title": "Types of Anonymization",
+  "status": "draft",
+  "experimental": true,
+  "date": "2021-11-22T11:54:11+01:00",
+  "description": "This CodeSystem contains the types of anonymization that are supported by the ResearchStudy",
+  "caseSensitive": false,
+  "content": "complete",
+  "property": [ {
+    "code": "ResearchStudyAnonymization",
+    "type": "boolean"
+  } ],
+  "concept": [ {
+    "code": "anonymization",
+    "display": "Anonymization",
+    "definition": "Personal information removed",
+    "property": [ {
+      "code": "ResearchStudyAnonymization",
+      "valueBoolean": true
+    } ]
+  }, {
+    "code": "pseudonymization",
+    "display": "Pseudonymization",
+    "definition": "Personal information replaced with pseudonyms",
+    "property": [ {
+      "code": "ResearchStudyAnonymization",
+      "valueBoolean": true
+    } ]
+  } ]
+}

@@ -1,0 +1,92 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/QuestionnaireExtension-IEHR",
+  "name": "QuestionnaireExtensionIEHR",
+  "title": "QuestionnaireExtension - IEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [ {
+    "type": "element",
+    "expression": "ResearchStudy"
+  } ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Extension.extension",
+      "path": "Extension.extension",
+      "slicing": {
+        "discriminator": [ {
+          "type": "value",
+          "path": "url"
+        } ],
+        "rules": "open"
+      }
+    }, {
+      "id": "Extension.extension:Questionnaire",
+      "path": "Extension.extension",
+      "sliceName": "Questionnaire",
+      "min": 1,
+      "max": "1"
+    }, {
+      "id": "Extension.extension:Questionnaire.url",
+      "path": "Extension.extension.url",
+      "fixedUri": "Questionnaire"
+    }, {
+      "id": "Extension.extension:Questionnaire.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "Reference",
+        "targetProfile": [ "http://interopehrate.eu/fhir/StructureDefinition/Questionnaire-IEHR" ]
+      } ]
+    }, {
+      "id": "Extension.extension:Deadline",
+      "path": "Extension.extension",
+      "sliceName": "Deadline",
+      "definition": "This extension contains the date when the Questionnaire should be completed at the latest",
+      "min": 1,
+      "max": "1"
+    }, {
+      "id": "Extension.extension:Deadline.url",
+      "path": "Extension.extension.url",
+      "fixedUri": "Deadline"
+    }, {
+      "id": "Extension.extension:Deadline.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "dateTime"
+      } ]
+    }, {
+      "id": "Extension.extension:ReminderFrequency",
+      "path": "Extension.extension",
+      "sliceName": "ReminderFrequency",
+      "definition": "This extension contains the information how often the app should remind the patient to fill out this questionnaire.",
+      "min": 1,
+      "max": "1"
+    }, {
+      "id": "Extension.extension:ReminderFrequency.url",
+      "path": "Extension.extension.url",
+      "fixedUri": "ReminderFrequency"
+    }, {
+      "id": "Extension.extension:ReminderFrequency.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "Timing"
+      } ]
+    }, {
+      "id": "Extension.url",
+      "path": "Extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/QuestionnaireExtension-IEHR"
+    }, {
+      "id": "Extension.value[x]",
+      "path": "Extension.value[x]",
+      "max": "0"
+    } ]
+  }
+}

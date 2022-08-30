@@ -1,0 +1,14 @@
+{
+  "resourceType": "ValueSet",
+  "id": "CodingOperator-IEHR",
+  "url": "http://interopehrate.eu/fhir/ValueSet/CodingOperator-IEHR",
+  "name": "CodingOperatorValueSetIEHR",
+  "title": "CodingOperatorValueSet-IEHR",
+  "status": "draft",
+  "description": "This ValueSet contains codes that can be used for the operator in Coding-IEHR",
+  "compose": {
+    "include": [ {
+      "system": "http://interopehrate.eu/fhir/CodeSystem/CodingOperator-IEHR"
+    } ]
+  }
+}

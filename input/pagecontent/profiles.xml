@@ -1,0 +1,76 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+  <a name="profiles"> </a>
+  <h3>List of profiles</h3>
+  <p>This page contains a list with the name and a short description for all the profiles, that are defined in this IG. To see a list of all FHIR artifacts defined as part of this IG go to <a href="artifacts.html">Artifact Index</a>.</p>
+
+  <ul>
+    <li>
+      <a href="StructureDefinition-CodeableConcept-IEHR.html">CodeableConcept-IEHR</a>
+      <p>
+        This profile represents the constraint applied to the CodeableConcept datatype , that it should use the Coding-IEHR datatype for the coding attribute.
+      </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-Coding-IEHR.html">Coding-IEHR</a>
+    <p>
+      This profile represents the constraint applied to the Coding datatype , that allows the use of the <a href="StructureDefinition-Operator-Extension-IEHR.html">OperatorExtension</a> in the datatype.
+    </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort-IEHR</a>
+    <p>
+      This profile represents the constraints applied to the Group resource, that is used to define entry and exit conditions for the study. <br/>
+      The profile constrains the characteristic codes to those known and interpretable by the system.
+    </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirement-IEHR</a>
+    <p>
+      This profile represents the constraints applied to the DataRequirement resource, that is used to represent a data point that the patient should in provide as part of the study.<br/>
+      The profile also contains an extension that defines how often this data point should be transmitted.
+    </p>
+    </li>
+
+    <li>
+      <a href="StructureDefinition-Narrative-IEHR.html">Narrative-IEHR</a>
+      <p>
+        This profile allows the Narrative to be extended with versions in different languages using the <a href="StructureDefinition-NarrativeExtension-IEHR.html">NarrativeExtension-IEHR</a>.
+      </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-Location-ReferenceResearchCenter-IEHR.html">ReferenceResearchCenter-IEHR</a>
+    <p>
+      This profile represents the constraints applied to the Location resource, that is used to represent a locations that takes part in the study. <br/>
+      The profile makes the attributes required, that are used by the queries and are necessary to clearly identify a location.
+    </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a>
+    <p>
+      This profile represents the constraints applied to the ResearchStudy resource, that is used as the entry resource for the study bundle. <br/>
+      The profile makes the attributes required, that are used by the queries and contains extensions that represent additional information.
+    </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a>
+    <p>
+      This profile represents the constraints applied to the Questionnaire resource, that is used to represent a questionnaire that the participant is expected to complete.
+      The profile contains a mandatory extension that refers to the CodeSystem that contains the codes used for the questions.     </p>
+    </li>
+
+    <li>
+    <a href="StructureDefinition-QuestionnaireResponse-IEHR.html">QuestionnaireResponse-IEHR</a>
+    <p>
+      This profile represents the constraints applied to the QuestionnaireResponse resource, that is used to represent the response a patient gave to a questionnaire.
+      The profile makes the attributes required, that are used to reference the corresponding Questionnaire, the lifecycle status of the questionnaire response as well as the language of the response.
+    </p>
+    </li>
+
+  </ul>
+</div>

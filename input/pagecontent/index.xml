@@ -1,0 +1,148 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+    <!-- The spaces between the open and close "a" tag are mandatory.  (Cuz HTML renderers are dumb...) -->
+    <p>
+        The goal of this Implementation Guide (IG) is to specify the HL7 FHIR profiles to represent the content that is exchanged via the research protocol defined in the project interopEHRate and evaluated in project pilot.
+        This IG includes new types of profiles, as no working group deals with the topic of research data sharing in a similar way and based on H17 FHIR R4. Appropriate basic resources such as research studies are used as a basis.
+    </p>
+    <p>To get in insight to all FHIR artifacts defined in this project, go to <a href="artifacts.html">Artifact Index</a>.
+        More specific lists are available on the pages <a href="profiles.html">Profiles</a> (Specification -> Profiles) and <a href="extensions.html">Extensions</a> (Specification -> Extensions).</p>
+
+    <a name="background"> </a>
+    <h3>Project Background</h3>
+    <p>
+        This ImplementationGuide is part of the interopEHRate project. Details on the project background are available at <a href="https://www.interopehrate.eu/">interopEHRate.eu</a>.
+    </p>
+    <center>
+        <figure>
+            <img height="100" src="IEHR_logo.png" alt="IEHR logo"/>
+            <figcaption>Fig. 1.1: Official logo of the InteropEHRate project</figcaption>
+        </figure>
+    </center>
+    <br/>
+    <p>InteropEHRate in a nutshell -
+        In short, the project enables patients to be in full control of the usage and the routes of their health data.
+        The central instrument, being laid in "patients' hands" is the Smart EHR (S-EHR), leveraging a set of new protocols for secure and cross border exchange of health data.
+    </p>
+    <p>Read more about this project's goal and purpose <a href="protocol_overview.html">here</a>.</p>
+
+    <a name="scope"> </a>
+    <h3>Scope of this IG</h3>
+    <p> The Research Data Sharing Protocol (in the following: the Protocol) addresses the general problem of collecting health data for cross-border medical research.
+        The motivation underlying the solution presented here is to enable cross-border data collection in a way that involves citizens more directly in the decisions regarding the sharing of their data.
+    </p>
+    <p> The overarching goal of the Protocol is to specify a set of remote APIs and constraints on their usage that provide the technical means to citizens for the sharing of their health data for the purposes of cross-border medical research, in a cross-border interoperable manner.
+        The particularity of this protocol, as opposed to current practices in medical research, is that it puts the citizens in full control of the sharing of their data: after explicit consent, data are retrieved directly from a citizen’s mobile device in an anonymized manner.
+    </p>
+
+    <center>
+    <figure>
+        <img height="250" src="RDS_protocol_overview.png" alt="High-level overview of the entities involved in the Research Data Sharing Protocol"/>
+        <figcaption>Fig. 1.2: High-level overview of the entities involved in the Research Data Sharing Protocol</figcaption>
+    </figure>
+    </center>
+    <br/>
+    <p>
+        Figure 1.2 shows a simple schematic diagram of the main components of a research data sharing scenario as assumed by the Protocol.
+        The setup consists of </p>
+    <ol type="a">
+        <li>patients in possession of electronic health records stored on their mobile devices (the S-EHR App in the picture);</li>
+        <li>a Research Network that consists of interconnected Research Centres as well as a Central Node;</li>
+        <li>a Hospital possibly outside of the Research Network that holds some of the Citizen’s health data. </li>
+    </ol>
+    <p>Read more about the involved actors and systems <a href="protocol_overview.html#actors-and-systems">here</a> or take a deeper look at the Protocol's <a href="architecture.html">Architecture and Interfaces</a>.</p>
+
+    <a name="acronyms"> </a>
+    <h3>Acronyms and Terms</h3>
+    <table border="1" style="border-collapse:collapse;width:100%" bordercolor="#548dd4">
+        <tr>
+            <th style="font-style:bold; color: white; background-color: #548dd4;">Acronym</th>
+            <th style="font-style:bold; color: white; background-color: #548dd4;">Term </th>
+            <th style="font-style:bold; color: white; background-color: #548dd4;">Definition</th>
+        </tr>
+        <tr>
+            <td>CN</td>
+            <td>Central Node</td>
+            <td>A node of the Research Network (a server) that stores published research studies and provides a central access point to S-EHR Apps for retrieving the descriptions of research studies.</td>
+        </tr>
+
+        <tr>
+            <td>-</td>
+            <td>Citizen</td>
+            <td>Any person potentially participating in a research study and having the minimal technical means to do so, i.e. the S-EHR App installed on their smartphone.</td>
+        </tr>
+
+        <tr>
+            <td>-</td>
+            <td>Client</td>
+            <td>The (public or private) legal entity who has ordered the research study and is paying for it.</td>
+        </tr>
+
+        <tr>
+            <td>CRC</td>
+            <td>Coordinating Research Centre</td>
+            <td>A medical research centre that initiates a particular research study and is in charge of defining it and carrying it out.</td>
+        </tr>
+
+        <tr>
+            <td>PI</td>
+            <td>Principal Investigator</td>
+            <td>A researcher (person), <br/> e.g. PI of the Research Centre = the researcher (person) in charge of the citizens enrolled for a specific study at a RC or <br/> PI of the Study = the researcher (person) in charge of a specific study at the CRC.</td>
+        </tr>
+
+        <tr>
+            <td>RDD</td>
+            <td>Research Definition Document</td>
+            <td>A document written in a formal, computer-processable language that describes the research datasets to be retrieved from citizens’ EHRs, enrollment and exit criteria, as well as related metadata.</td>
+        </tr>
+
+        <tr>
+            <td>RDDI</td>
+            <td>RDD Interface</td>
+            <td>Application Programming Interface allowing the exchange of RDDs between the Central Node and the S-EHR App.</td>
+        </tr>
+
+        <tr>
+            <td>RDS</td>
+            <td>Research Data Sharing</td>
+            <td>Acronym of the Research Data Sharing Protocol, the protocol covered by this deliverable</td>
+        </tr>
+
+        <tr>
+            <td>RDSI</td>
+            <td>RDS Interface</td>
+            <td>Application Programming Interface allowing the exchange of consent and health data between the S-EHR App and Research Centres.</td>
+        </tr>
+
+        <tr>
+            <td>RN</td>
+            <td>Research Network</td>
+            <td>The network of research centres and technical nodes that implement the Protocol.</td>
+        </tr>
+
+        <tr>
+            <td>RRC</td>
+            <td>Reference Research Centre</td>
+            <td>A research centre participating in a given study is a RRC for the citizens who are officially attached to it (i.e. send data to it) for the duration of the study.</td>
+        </tr>
+    </table>
+    <a name="walkthrough"> </a>
+    <a name="technical"> </a>
+    <h3>Technical Overview</h3>
+    <p>
+        The main sections of this IG are:
+    </p>
+    <ul>
+        <li>
+            <a href="protocol_overview.html">Protocol Overview</a> - provides general informations about the research-data-sharing protocol
+        </li>
+        <li>
+            <a href="architecture.html">Architecture and Interfaces</a> -provides information about the architecture and interfaces designed for this protocol
+        </li>
+        <li>
+            <a href="datamodels.html">DataModels</a> -provides information about the datamodels defined in the artifact section.
+        </li>
+        <li>
+            <a href="downloads.html">Downloads</a> - Allows downloading a copy of this implementation guide and other useful information
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,22 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "CodingOperator-IEHR",
+  "url": "http://interopehrate.eu/fhir/CodeSystem/CodingOperator-IEHR",
+  "name": "CodingOperatorCodeSystemIEHR",
+  "title": "Possible codes for Coding-IEHR",
+  "status": "draft",
+  "experimental": true,
+  "date": "2022-02-21T12:52:43+01:00",
+  "description": "This CodeSystem contains possible codes that can be used as operators in Codings",
+  "caseSensitive": false,
+  "content": "complete",
+  "concept": [ {
+    "code": "startsWith",
+    "display": "StartsWith",
+    "definition": "The Coding describes all codes in the specified system, that start with the specified code"
+  }, {
+    "code": "exact",
+    "display": "Exact",
+    "definition": "The Coding only describes the codes in the specified system, that are exactly the specified code"
+  } ]
+}

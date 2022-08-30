@@ -1,0 +1,48 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/Group-Cohort-IEHR",
+  "name": "StructureDefinitionGroupCohortIEHR",
+  "title": "Cohort",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Group",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Group",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Group.type",
+      "path": "Group.type",
+      "fixedCode": "person"
+    }, {
+      "id": "Group.characteristic",
+      "path": "Group.characteristic",
+      "min": 1
+    }, {
+      "id": "Group.characteristic.code",
+      "path": "Group.characteristic.code",
+      "binding": {
+        "strength": "extensible",
+        "description": "A list of possible codes",
+        "valueSet": "http://interopehrate.eu/fhir/ValueSet/CharacteristicCodeValueSet-IEHR"
+      }
+    }, {
+      "id": "Group.characteristic.value[x]",
+      "path": "Group.characteristic.value[x]",
+      "comment": "If the value of the characteristic is represented by a CodeableConcept the Codings are connected with an OR. So a patient will have the characteristic, if any of the Codings specified in the Cohort are found in a resource for the patient. This is necessary to represent characteristics like: The participant should have one of the following heart conditions. The participant should take one of the following medications.",
+      "type": [ {
+        "code": "CodeableConcept",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/CodeableConcept-IEHR" ]
+      }, {
+        "code": "boolean"
+      }, {
+        "code": "Quantity"
+      }, {
+        "code": "Range"
+      }, {
+        "code": "Reference"
+      } ]
+    } ]
+  }
+}

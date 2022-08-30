@@ -1,0 +1,161 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+<a name="rdd"> </a>
+<h3><a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy</a></h3>
+<p>
+The ResearchStudy is the main resource for the RDD and references the other aspects
+</p>
+
+<a name="rddExt"> </a>
+<h4> Extensions </h4>
+<p>
+Each ResearchStudy contains exactly one DataSetDefinitionExtension-IEHR, that defines the data requested by the study. <br/>
+It can also contain any amount of QuestionnaireExtension-IEHR, that contain Questionnaires each participant of the study has to complete. <br/>
+It also contains exactly one EnrollmentPeriodExtension-IEHR, that defines the period during which new participants are accepted into the study. <br/>
+There also can be a AnonymizationExtension-IEHR, that defines if the data transmitted by the participants should be anonymized or pseudoanonymized. 
+</p>
+
+<a name="rddExt"> </a>
+<h4> Important attributes </h4>
+<p>
+The identifier contains at least one entry, that consist of the url of a system and the value of the study on this system. This identifier can be used to access the study from another system. <br/>
+The title contains the name of the ResearchStudy and the primary purpose type specifies the intent of the study. The code should be from the ValueSet  <a href="http://hl7.org/fhir/ValueSet/research-study-prim-purp-type">ResearchStudyPrimaryPurposeType</a>, but if there is no fitting code others can be used.<br/>
+The contact attribute contains at least one set of contact information (phone number, email address,...) that people can contact to learn more about the study.<br/>
+The location attribute contains at least one geographical location for the study.<br/>
+The description attribute can be used to add a free text description to the study.<br/>
+The enrollment attribute references the Cohort resource, that defines characteristics that participants must have or are forbidden to have.<br/>
+The period attributes contains information about the duration of the study. This is not the period during which new participants are acceptend, but the period the study is expected to last.<br/>
+The site attribute contains at least one location where the study is conducted. The participants will be able to chose locations from these list to go to when necessary. <br/>
+The sponsor attributes can used to reference the Organization sponsoring this study and the principalInvestigator attribute can reference the reseacher overseeing the study.
+</p>
+
+<a name="datareq"> </a>
+<h3><a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirements</a></h3>
+<p>
+The ResearchStudy contains a DataSetDefinitionExtension-IEHR that contains DataRequirement-Extensions.
+There should be one DataRequirements for each set of data that the study wants to collect.
+</p>
+<a name="datareqExt"> </a>
+<h4> Extensions </h4>
+<p>
+A DataRequirements can contain an optional function in the Function-Extension.
+This function instructs the system collecting and transmitting the data how the data should be preprocessed before it transmitted as part of the study.
+If no funtion is provided the whole resource should be transmitted.
+</p>
+<p>
+The requirement can also contain a Frequency extension, that defines how often the data should be transmitted. <br/>
+The extension contains a <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a> datatype and the repeat.frequency, repeat.period and repeat.periodUnit attributes of the <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a> can be used to define the frequency. 
+The meaning of these attributes is as follows: The data should be transmitted frequency times per period periodUnit, so for example if it should be transmitted 2 times per 1 week the frequency is 2, the period 1 and the periodUnit wk. <br/>
+The dayofWeek attribute can be used to specify which days of the week the data should be send and the timeOfDay can be used to specify the exact time. <br/>
+The profile will not check, if these attributes are consistent with one another and it is up to the creator of the study to make sure, that the values make sense.
+</p>
+<a name="datareqAttr"> </a>
+<h4> Important attributes </h4>
+<p>
+The type attribute of the DataRequirement defines the type of resource, that is requested. For example if the study collects information about a disease the type would be Condition. <br/>
+The limit attribute can be used to constrain the amount of data sent. If a limit is set and is reached, then the system should not send additional data even if the frequency demands it.
+</p>
+<a name="datareqFilter"> </a>
+<h4> Filter </h4>
+<p>
+The codeFilter and dateFilter attributes further constrain the data. If no filters are given every resource with the given type is requested.
+</p>
+<a name="codeFilter"> </a>
+<h5> codeFilter </h5>
+<p>
+The codeFilter constrains the content of the resource and only resources that comply with ALL codeFilters in a DataRequirement comply with the DataRequirement and should be transmitted.
+Each codeFilter should contain a path that points to an attribute from the resource defined in type. Additionally it contains either a ValueSet or a code.
+If it contains a ValueSet a resources is accepted by the filter if the attribute contains a code from the set, for example if any VitalSign is requested the type is Observation, the path is code and the valueSet is <a href="http://hl7.org/fhir/R4/valueset-observation-vitalsignresult.html">VitalSigns</a>.<br/>
+If the filter contains a list of codes a resource is accepted by the filter if the attribute contains at least one of the specified codes, for example a different way to request a VitalSign would be with type:Observation, path: category, and coding (http://terminology.hl7.org/CodeSystem/observation-category,vital-signs).<br/>
+</p>
+<p>
+If the CodeableConcept should contain a list of codes that represent a group of related codes from an hierachically CodeSystem they might share a prefix.<br/>
+In this case the Operator-Extension of the Coding-IEHR can be used: the operator will be set to startsWith and the coding contains the system, the common prefix in the display attribute and an empty code attribute.<br/>
+This representation is equivalent to a list of all codes in the system that start with this prefix.<br/>
+However, this representation should only be used after ensuring that no unwanted codes with this prefix exist. Otherwise this might add unexpected characteristics to the Cohort and wrongly include or exclude participants. 
+</p>
+<a name="dateFilter"> </a>
+<h5> dateFilter </h5>
+<p>
+The dateFilter constrains the timeframe of the resource and only resources that comply with ALL dateFilters in a DataRequirement comply with the DataRequirement and should be transmitted.
+Each dateFilter should contain a path that points to an attribute from the resource defined in type. This attribute should have either a DateTime or a Period as type, because otherwise the dateFilter will reject every resource.<br/>
+Additionally the dateFilter can contain either a Date, a Period or a Duration.
+</p>
+<p>
+If it contains a Date a resource is accepted by the filter, if the attribute contains the same date. <br/>
+If it contains a Period a resource is accepted by the filter, if the date or period in the attribute falls within the period of the dateFilter. <br/>
+If it contains a Duration a resource is accepted by the filter, if the date in the attribute is within the Duration before now. <br/>
+</p>
+<p>
+The dateFilter can contain dates that are in the past, to request past information. Genreally all resources that fall into this date should be transmitted, but the amount of resources can be constrained by the frequency extension. <br/>
+It can also use periods that end or even start in the future in combination with the frequency extension to request regular updates and can request updates on specific days using a future Date in the filter.
+</p>
+
+<a name="cohort"> </a>
+<h3><a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort</a></h3>
+<a name="cohortAttr"> </a>
+<h4>Important attributes </h4>
+<p>
+The type attribute is fixed to person, because the ResearchStudies only requests human participants. <br/>
+The actual attribute is generally set to false, because the Cohort does not describes a group of people, but instead characterises intendet participants for the study. However, it can be set to true, if a group of participants has already been found and the Cohort is created as a formality to describe this group.<br/>
+</p>
+<p>
+The cohort contains characteristics, that constraint what type of participants are allowed.<br/>
+A person ist allowed to participate in the study, if the fullfill all include criteria and no exclude criteria. If the Cohort does not define any characteristics, this is trivial and every person can take part in the study. <br/>
+Each characteristic has a code attribute, that describes the kind of characteristic. The code should be from the ValueSet <a href="ValueSet-CharacteristicCodeValueSet-IEHR.html">CharacteristicCodesValueSet</a>, but if no fitting code can be found in the set others codes can be used. However, for other codes it can not be guaranteed, that other systems understand the code.<br/>
+The value attribute contains the value the person should have for the characteristic.<br/>
+The exclude attribute defines if the characteristic is an include or exclude characteristic. If the attribute is true, the person can only participate, if they do not have this characteristic. If it is false, they can only participate, if they have this characteristic. <br/>
+For example if the code is age, the value &#60; 50 y and exclude=true then people that are at less 50 years old can not participate. The example is equivalent to age, &#8805; 50 y and exclude=false, that says only people that are at least 50 years old can participate.
+</p>
+<a name="cohortNote"> </a>
+<h5>Notes about the use of Group.characterstic.valueCodeableConcept</h5>
+<p>
+If a CodeableConcept with multiple codings is used to represent the value of the characterstic, the codings are to be interpreted as connected with an OR. <br/>
+So if the type is Medication and the CodeableConcept contains multiple codings for different medications, any person that takes at least one of the medications has this characterstic. <br/>
+This interpretation allows for characterstics to specify, that any participant should have one of a list of items if the study is more general. <br/>
+For conditions this could be a list of different heart conditions, if the study is about heart conditions in general, or a list of medication if the study is about a group of drugs with a common active incredient.
+</p>
+<p>
+If the CodeableConcept should contain a list of codes that represent a group of related codes from an hierachically CodeSystem they might share a prefix.<br/>
+In this case the Operator-Extension of the Coding-IEHR can be used: the operator will be set to startsWith and the coding contains the system, the common prefix in the display attribute and an empty code attribute.<br/>
+This representation is equivalent to a list of all codes in the system that start with this prefix.<br/>
+However, this representation should only be used after ensuring that no unwanted codes with this prefix exist. Otherwise this might add unexpected characteristics to the Cohort and wrongly include or exclude participants. 
+</p>
+
+<a name="location"> </a>
+<h3><a href="StructureDefinition-Location-ReferenceResearchCenter-IEHR.html">ResearchCenter</a></h3>
+<a name="locationAttr"> </a>
+<h4>Important attributes </h4>
+<p>
+The identifier is optional and consist of the url of a system and the value of the ResearchCenter on this system. This identifier can be used to access the ResearchCenter from another system. <br/>
+The name attribute is mandatory and contains the name of the ResearchCenter.<br/>
+The type attribute is mandatory and contains a code from the ValueSet <a href="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType">ServiceDeliveryLocationRoleType</a>. This attribute describes what kind of service the ResearchCenter provides for the study.<br/>
+The telecom and address attributes are mandatory and contain the contact details for the ResearchCenter. <br/>
+The endpoint attribute is mandatory and contains a reference to an <a href="http://hl7.org/fhir/R4/endpoint.html">Endpoint</a>, that can be used by electronic services to communicate with the ResearchCenter.
+
+</p>
+
+<a name="questionnaire"> </a>
+<h3><a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension-IEHR</a></h3>
+<a name="questionnaireExt"> </a>
+<h4> Extensions </h4>
+<p>
+The extension Questionnaire contains a reference to exactly one questionnaire. This is the questionnaire the other extensions in this extension refer to.
+</p>
+
+<p>
+The extension Deadline contains a date and this date specifies the deadline for the questionnaire. <br/>
+If the deadline passes and the participant has not completed the questionnaire, they will be excluded from the study.
+</p>
+
+<p>
+The extension Reminderfrequency contains a <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a>, that specifies how often the service should remind the participant to complete the questionnaire, if they have not already done it.
+The repeat.frequency, repeat.period and repeat.periodUnit attributes of the <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a> can be used to define the reminderFrequency. 
+The meaning of these attributes is as follows: The participant should be reminded frequency times per period periodUnit, so for example if they should be reminded 2 times per 1 week the frequency is 2, the period 1 and the periodUnit wk. <br/>
+The dayofWeek attribute can be used to specify which days of the week the participant should be reminded and the timeOfDay can be used to specify the exact time. This could be used to make sure the patient can immediatly start with the questionnaire and does not forget it again, for example by choosing times where the participant is not working.<br/>
+The extension will not check, if these attributes are consistent with one another and it is up to the creator of the study to make sure, that the values make sense.
+</p>
+
+<a name="anon"> </a>
+<h3>Anonymized Patient</h3>
+//TODO fill this out
+</div>

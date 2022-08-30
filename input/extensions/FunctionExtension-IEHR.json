@@ -1,0 +1,111 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "FunctionExtension-IEHR",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/FunctionExtension-IEHR",
+  "name": "FunctionExtensionIEHR",
+  "title": "FunctionExtension - IEHR",
+  "status": "draft",
+  "description": "This Extension is used to describe how requested data should be processed",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [ {
+    "type": "element",
+    "expression": "DataRequirement"
+  } ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Extension",
+      "path": "Extension",
+      "short": "Function",
+      "min": 0,
+      "max": "1",
+      "constraint": [ {
+        "key": "extIEHR-1",
+        "severity": "error",
+        "human": "The ageFromDate function should only have two parameters that points to the patient attribute in the requested resource (e.g Observation.subject) and the creation date (e.g Observation.subject).",
+        "expression": "extension('Name').value.code = 'ageFromDate' implies (extension('Parameter').count()=2)"
+      }, {
+        "key": "extIEHR-2",
+        "severity": "error",
+        "human": "The count function does not have parameters",
+        "expression": "extension('Name').value.code = 'count' implies (extension('Parameter').empty())"
+      }, {
+        "key": "extIEHR-3",
+        "severity": "error",
+        "human": "The data function does not have parameters",
+        "expression": "extension('Name').value.code = 'data' implies (extension('Parameter').empty())"
+      }, {
+        "key": "extIEHR-4",
+        "severity": "error",
+        "human": "The summary function does not have parameters",
+        "expression": "extension('Name').value.code = 'summary' implies (extension('Parameter').empty())"
+      }, {
+        "key": "extIEHR-5",
+        "severity": "error",
+        "human": "The element function must have parameter",
+        "expression": "extension('Name').value.code = 'element' implies (extension('Parameter').exists())"
+      } ]
+    }, {
+      "id": "Extension.extension",
+      "path": "Extension.extension",
+      "slicing": {
+        "discriminator": [ {
+          "type": "value",
+          "path": "url"
+        } ],
+        "rules": "closed"
+      },
+      "min": 1
+    }, {
+      "id": "Extension.extension:Name",
+      "path": "Extension.extension",
+      "sliceName": "Name",
+      "min": 1,
+      "max": "1"
+    }, {
+      "id": "Extension.extension:Name.url",
+      "path": "Extension.extension.url",
+      "fixedUri": "Name"
+    }, {
+      "id": "Extension.extension:Name.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "Coding"
+      } ],
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://interopehrate.eu/fhir/ValueSet/FunctionCodesValueSet-IEHR"
+      }
+    }, {
+      "id": "Extension.extension:Parameter",
+      "path": "Extension.extension",
+      "sliceName": "Parameter",
+      "min": 0,
+      "orderMeaning": "Only if Extension:name=ageFromDate, then first is the attribute of the subject and the second is the attribute of the resources creation date"
+    }, {
+      "id": "Extension.extension:Parameter.url",
+      "path": "Extension.extension.url",
+      "fixedUri": "Parameter"
+    }, {
+      "id": "Extension.extension:Parameter.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "string"
+      } ]
+    }, {
+      "id": "Extension.url",
+      "path": "Extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/FunctionExtension-IEHR"
+    }, {
+      "id": "Extension.value",
+      "path": "Extension.value",
+      "max": "0"
+    } ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "resourceType": "Bundle",
+  "id": "1216512",
+  "type": "collection",
+  "timestamp": "2021-11-22T13:22:36.716+01:00",
+  "entry": [ {
+    "fullUrl": "http://interopEHRate.eu/fhir-resource/Observation/1111",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "1111",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "extension": [ {
+        "url": "http://interopehrate.eu/fhir/StructureDefinition/AnonymizationExtension-IEHR",
+        "valueCoding": {
+          "system": "http://interopehrate.eu/fhir/CodeSystem/AnonymizationType-IEHR",
+          "code": "anonymization",
+          "display": "Anonymization"
+        }
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8867-4",
+          "display": "Heart rate"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/3466"
+      },
+      "effectiveDateTime": "2021-08-30",
+      "performer": [ {
+        "reference": "Organization/34432"
+      } ],
+      "valueQuantity": {
+        "value": 62,
+        "unit": "/min",
+        "system": "http://unitsofmeasure.org",
+        "code": "/min"
+      }
+    }
+  }, {
+    "fullUrl": "http://interopEHRate.eu/fhir-resource/Patient/3466",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "3466",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips" ]
+      },
+      "language": "it-IT",
+      "extension": [ {
+        "url": "http://interopehrate.eu/fhir/StructureDefinition/AnonymizationExtension-IEHR",
+        "valueCoding": {
+          "system": "http://interopehrate.eu/fhir/CodeSystem/AnonymizationType-IEHR",
+          "code": "anonymization",
+          "display": "Anonymization"
+        }
+      } ],
+      "name": [ {
+        "family": "anonymous"
+      } ],
+      "gender": "male",
+      "birthDate": "2013-12-05",
+      "generalPractitioner": [ {
+        "reference": "Organization/34432"
+      } ]
+    }
+  }, {
+    "fullUrl": "http://interopEHRate.eu/fhir-resource/Organization/34432",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "34432",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/uv/ips/StructureDefinition/Organization-uv-ips" ]
+      },
+      "language": "it-IT",
+      "identifier": [ {
+        "system": "http://interopEHRate.eu/fhir-resource/",
+        "value": "Organization/FTGM01"
+      } ],
+      "name": "Fondazione Gabriele Monasterio",
+      "address": [ {
+        "line": [ "Via Giuseppe Moruzzi 1" ],
+        "city": "Pisa",
+        "country": "IT"
+      } ]
+    }
+  } ]
+}

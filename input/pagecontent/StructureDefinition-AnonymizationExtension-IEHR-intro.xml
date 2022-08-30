@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<a name="notesParameter"> </a>
+<h3>Notes on the pseudonymization process</h3>
+<p>
+For the research scenario, random pseudonyms are used for privacy-preserving data sharing based on the signature scheme proposed in 'Jan Camenisch, Anna Lysyanskaya. "Signature Schemes and Anonymous Credentials from Bilinear Maps." CRYPTO 2004.'
+</p>
+
+<p> 
+This extension can be used in two different contexts with different meaning:
+<ol>
+<li>ResearchStudy: If the extension is part of a ResearchStudy it represents how the answers to the study SHOULD be anonymized before they are sent to the Researchcenter. </li>
+<li>Other resources: If the extension is part of another resource it represents how the resource IS anonymized. Therefore a resource without this extension should be treated as not anomyized at all. </li>
+</ol>
+</p>
+</div>

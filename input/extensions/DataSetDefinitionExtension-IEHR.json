@@ -1,0 +1,55 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/DataSetDefinitionExtension-IEHR",
+  "name": "DataSetDefinitionExtensionIEHR",
+  "title": "DataSetDefinitionExtension - IEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [ {
+    "type": "element",
+    "expression": "ResearchStudy"
+  } ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Extension.extension",
+      "path": "Extension.extension",
+      "slicing": {
+        "discriminator": [ {
+          "type": "value",
+          "path": "url"
+        } ],
+        "rules": "open"
+      }
+    }, {
+      "id": "Extension.extension:DataRequirement",
+      "path": "Extension.extension",
+      "sliceName": "DataRequirement",
+      "min": 1
+    }, {
+      "id": "Extension.extension:DataRequirement.url",
+      "path": "Extension.extension.url",
+      "fixedUri": "DataRequirement"
+    }, {
+      "id": "Extension.extension:DataRequirement.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "DataRequirement",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/DataRequirement-IEHR" ]
+      } ]
+    }, {
+      "id": "Extension.url",
+      "path": "Extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/DataSetDefinitionExtension-IEHR"
+    }, {
+      "id": "Extension.value[x]",
+      "path": "Extension.value[x]",
+      "max": "0"
+    } ]
+  }
+}

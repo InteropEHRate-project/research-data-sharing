@@ -1,0 +1,16 @@
+== Suppressed Messages ==
+# The pdf is only added after the IG is generated, so it can not be resolved during creation
+The link 'rds-ig.pdf' for "here" cannot be resolved
+
+# Caused by the custom liquid-Template for the ResearchStudy in combination with a Bundle. Not sure how to resolve this, but it does not appear to cause any issues in the narrative. 
+Illegal element name inside in a paragraph in the XHTML ('table')
+
+# Some examples were created by the Fondazione Toscana "Gabriele Monasterio" and they use this system
+Code System URI "urn:oid:2.16.840.1.113883.2.9.2.90.6.907.66" ist unbekannt, so dass der Code nicht validiert werden kann
+Code System URI "urn:oid:2.16.840.1.113883.1.11.17660" ist unbekannt, so dass der Code nicht validiert werden kann
+
+# The system can be used for ResearchStudy.location, because it is one of the three from the ValueSet http://hl7.org/fhir/ValueSet/jurisdiction, that is bound to ResearchStudy.location
+Code System URI "urn:iso:std:iso:3166-2" ist unbekannt, so dass der Code nicht validiert werden kann
+
+# The profile defines a Datatype and not a Ressource
+The Implementation Guide contains no explicitly linked examples for this profile

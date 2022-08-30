@@ -1,0 +1,9 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<a name="notedAutoGen"> </a>
+<h3>Notes about the AutomaticallyGenerated extension</h3>
+    <p>The AutomaticallyGeneratedExtension-IEHR is designed to serve as a flag for an automatically generated translation of codes. Such a translation of a code is necessary, for example, if the author of a resource provided a code of a local code system and the translation service had to translate this code into a code contained in the system required by the corresponding IEHR profile in order for the resource to pass validation. </p>
+    <p>In this case, the AutomaticallyGeneratedExtension-IEHR must be added to the resource with the value <u>true</u>, to alert any readers, that this code was automatically provided and there is no guarantee, that it is a perfect match for the original code.</p>
+    <p>If the value of the AutomaticallyGeneratedExtension-IEHR is <u>false</u> or the extension is non-existent, the coding was added by the creator of the resource and can be assumed to be precise. </p>
+    <p><b>If a translated code is used, the original code must always be provided as well.</b> Furthermore, for critical operations it might be necessary to use the original and query the meaning of the code from the author to ensure, that there is no misunderstanding.</p>
+</div>

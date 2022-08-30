@@ -1,0 +1,275 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+    <a name="rdd"> </a>
+    <h3>Research Definition Document (RDD)</h3>
+    <p>
+        The main resource to represent the RDD is the <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a> and it references the other resources that make up the RDD. The ResearchStudy-IEHR additionally contains some administrative information about the study.
+    </p>
+    <p>
+        The most important attributes of the <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a>, their meaning and handling are explained below:
+    </p>
+    <ul>
+        <li>The information about from where the study can be requested is displayed as a pair of url and name in the ResearchStudy.identifier attribute.</li>
+        <li>The title of the RDD is displayed in the ResearchStudy.title attribute.</li>
+        <li>The purpose of the study is displayed by a code in the ResearchStudy.primaryPurposeType attribute. This code should be from the <a href="http://hl7.org/fhir/R4/valueset-research-study-prim-purp-type.html">ResearchStudyPrimaryPurposeType ValueSet</a></li>
+        <li>Contact details for further inquiries about the study are represented in the ResearchStudy.contactDetail attribute.</li>
+        <li>The geographical locations where the study takes place are displayed as codes from the <a href="http://hl7.org/fhir/R4/valueset-jurisdiction.html"> Jurisdiction ValueSet</a> in the ResearchStudy.location attribute. </li>
+    </ul>
+    <p>
+        <b>Important note:</b> Only one RDD is published by the PI and this RDD contains the content in all necessary languages.
+        Further information on the subject of translations can be found on page <a href="translation.html">Translation Instructions</a>.
+    </p>
+    <a name="dataReq"> </a>
+    <h3>Customized Data Requests - <a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirement-IEHR</a></h3>
+    <p>For example, suppose that for a study, only information on the incidence of certain diseases is
+        collected. At this point, it would be redundant to request the entire resources of study participants
+        instead of just the attributes of interest. For this purpose, the <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a>
+        contains the <a href="StructureDefinition-DataSetDefinitionExtension-IEHR.html">DataSetDefinitionExtension-IEHR</a>,
+        containing one or more <a href="StructureDefinition-DataRequirement-IEHR.html">DataRequirement-IEHRs</a>.
+    </p>
+    <p>As mentioned above, a DataRequirement describes a required data item.
+        There should be one DataRequirement for each set of data that the study wants to collect.
+        For this, the attribute DataRequirement.type defines the type of resource, that is requested. For example if the study collects information about a disease the type would be <i>Condition</i>.
+    </p>
+
+    <a name="DataReqExtFunction"> </a>
+    <h4>Data Processing Instructions</h4>
+    <p>Considering the example of a study looking at the incidence of a particular disease, it is not beneficial to request entire resources. For this purpose,
+        it is possible to give instructions to the system that collects and transmits the data as to how the data should be processed prior to transmission as part of the study.
+        Accordingly, it is possible, e.g., to have the amount of patients with a certain disease returned directly, instead of getting all patient resources and doing the counting yourself.
+        The instructions can be transmitted using the <a href="StructureDefinition-FunctionExtension-IEHR.html">FunctionExtension-IEHR</a>, an extension which in turn contains two other extensions:
+    </p>
+    <ul>
+        <li>extension:Name is bond to the <a href="ValueSet-FunctionCodesValueSet-IEHR.html">FunctionCodes ValueSet</a> containing 5 codes for the supported functions (ageFromDate, count, data, summary, element).
+            Example: When using the code <i>count</i>, the function returns the number of matching resources e.g. the amount of patients with a certain disease, but not the resources</li>
+        <li>extension:Parameter is directly dependent on the used function defined in extension:Name, since not all functions need a parameter. Only <i>ageFromDate</i> and <i>element</i> require additional parameters:
+            <ul>
+                <li>ageFromDate: This function returns the age of the resource's subject and should only have two parameter. The first one points to the Reference of the subject and the second one to the creation date of the resource. </li>
+                <li>element: By using this function, the system returns only the attributes specified in the parameter extensions. Therefore, it can have any number of parameters.</li>
+            </ul>
+        </li>
+    </ul>
+    <p>To retrieve complete resources no function must be specified.</p>
+
+    <a name="codeFilter"> </a>
+    <h5>Constraining based on Content</h5>
+    <p>To further constrain the transmitted data based on the resources content, the attribute DataRequirement.codeFilter is used.
+        The codeFilter constrains the content of the resource and only resources that comply with ALL codeFilters in a DataRequirement comply with the DataRequirement and should be transmitted.
+    </p>
+    <p>
+        To filter by code, the codeFilter attribute (<i>DataRequirement.codeFilter</i>) should contain a path (<i>codeFilter.path</i>) that points to an attribute from the resource defined in DataRequirement.type. Additionally, the codeFilter contains either one or more codes (<i>codeFilter.code</i>) or a ValueSet (<i>codeFilter.valueSet</i>). </p>
+    <p>
+        If codeFilter contains a ValueSet (<i>codeFilter.valueSet</i>), only resources that contain code from the ValueSet in the specified attribute (<i>codeFilter.path</i>) are accepted by the filter.
+        Example:
+    </p>
+    <ul>
+        <li>Any <a href="http://hl7.org/fhir/StructureDefinition/vitalsigns"> VitalSign</a> is requested: A VitalSign is represented as an Observation, therefore the DataRequirement.type = Observation. Since the VitalSign profile binds a specific ValueSet to its code (<i>Observation.code</i>), VitalSigns can be distinguished from other Observations based on this code. Accordingly, the codeFilter.path = code and codeFilter.valueSet = <a href="http://hl7.org/fhir/R4/valueset-observation-vitalsignresult.html">VitalSigns ValueSet</a>.
+        </li>
+    </ul>
+    <p>
+        If codeFilter contains a list of codes (<i>codeFilter.code</i>), only resources that contain at least one of the listed codes are accepted by the filter.
+        Example: </p>
+    <ul>
+        <li> Any <a href="http://hl7.org/fhir/StructureDefinition/vitalsigns"> VitalSign</a> is requested: A VitalSign is represented as an Observation, therefore the DataRequirement.type = Observation. In addition, Vital Signs have their own category (<i>Observation.category</i>), with which they can be differentiated from other Observations. Accordingly, the codeFilter.path = category and codeFilter.code = Coding (Coding.system = http://terminology.hl7.org/CodeSystem/observation-category, Coding.code = vital-signs).</li>
+    </ul>
+
+    <a name="dateFilter"> </a>
+    <h5>Constraining based on Timeframe</h5>
+    <p>To further constrain the transmitted data based on the resources' timeframe, the attribute DataRequirement.dateFilter is used.
+        Therefore, it is possible to have resources of a certain day or period of time returned. </p>
+    <p>
+        One or more dateFilter constrain timeframes and only resources that comply ALL dateFilters in a DataRequirement will meet this DataRequirement and be transmitted.
+    </p>
+    <p>To filter by time, the dateFilter attribute (<i>DataRequirement.dateFilter </i>) should contain a path (<i>codeFilter.path</i>) that points to an attribute from the resource defined in DataRequirement.type. This attribute should be of type DateTime or Period, otherwise the dateFilter will reject any resource. </p>
+    <p>
+        Additionally, the dateFilter may contain either a Date, a Period or a Duration in its value (<i>dateFilter.value[x]</i>). The resulting options for filtering are explained next.
+    </p>
+    <ul>
+        <li>If the dateFilter contains a Date, only resources that contain exactly this date in the previously specified attribute (<i>dateFilter.path</i>) are returned. </li>
+        <li>If the dateFilter contains a Period, only resources that contain a date or period in the previously specified attribute (<i>dateFilter.path</i>) that falls within the dateFilter’s period are returned.</li>
+        <li>If the dateFilter contains a Duration, only resources that contain a date in the previously specified attribute (<i>dateFilter.path</i>) that falls within the dateFilter’s Duration before now are returned.</li>
+    </ul>
+    <p>Note that the dateFilter refers to the time frame in which the data was actually collected. With Timing.bounds from the FrequencyExtension-IEHR, data is retrieved that was created in this time period.
+        For example, a vaccination may have taken place several years ago, but was only digitally recorded last month. If you request all data of the last month with Timing.bounds, this vaccination is included in the data set. If you request all vaccinations of the last month with dateFilter, this vaccination will not be sent.</p>
+
+    <p>Handling of dateFilter using examples: dateFilter.value[x] = ...</p>
+    <ul>
+        <li>Retrieve resources from today (e.g. May, 30th 2022)
+            <ul>
+                <li>... 2022-05-30</li>
+                <li>... Duration.value = 1, ... Duration.code = days, ... Duration.system = http://hl7.org/fhir/ValueSet/duration-units (= 24h)</li>
+            </ul>
+        </li>
+
+        <li>Retrieve resources from the last two weeks
+            <ul>
+                <li>... Period.start = 2022-05-16, ... Period.end = 2022-05-30 or</li>
+                <li>... Duration.value = 2, ... Duration.code = weeks, ... Duration.system = http://hl7.org/fhir/ValueSet/duration-units </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Please note that for retrieving information from the past, the dateFilter may contain dates that are in the past. In general, all resources that fall within this date will be transmitted. However, the number of resources to be returned may be additionally constrained by the frequency extension. </p>
+    <p>
+        In combination with the frequency extension, time periods ending or even starting in the future can also be used to request regular updates. Updates can be requested on specific days in the future by simply using the future date in the filter.
+    </p>
+
+
+    <a name="DataReqExtFrequency"> </a>
+    <h4>Data Transmission Frequency</h4>
+    <p> To receive data regularly or in certain time intervals, the <a href="StructureDefinition-FrequencyExtension-IEHR.html">FrequencyExtension-IEHR</a> can be used. It defines how often the data should be transmitted.
+        Since the extension's value is of datatype <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a>, it includes multiple possibilities to define the frequency of data transmission.</p>
+    <p>Handling of <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a>s attributes using examples: If data should be transmitted ...</p>
+    <ul>
+        <li>... 2 times per 1 week: frequency = 2, period = 1 and periodUnit = wk</li>
+        <li>... every monday and friday: dayOfWeek = mon, fri</li>
+        <li>... every monday at 1 pm: dayOfWeek = mon, timeOfDay = 13:00:00</li>
+        <li>... once at a specific date: event = 2022-06-15, repeat.count = 1</li>
+    </ul>
+    <p>Note that the profile does not check whether these attributes are consistent with each other, and that it is the responsibility of the study creator to ensure that the values make sense.
+    Furthermore, when timeOfDay is specified, it is inferred that the action happens every day (as filtered by dayofWeek) on the specified times. The elements when, frequency and period cannot be used as well as timeOfDay.</p>
+
+    <p>Please see the note on <a href="#dateFilter">dateFilter</a>, too.</p>
+
+    <a name="questionnaireExt"> </a>
+    <h3>Reference of Corresponding Questionnaires</h3>
+    <p>
+        The <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a> is designed to include as many study-related Questionnaires as necessary.
+        For this purpose, the ResearchStudy-IEHR is extended by the <a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension-IEHR</a>.
+        To reference one or more questionnaires, a corresponding number of <a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension-IEHRs</a> must be attached to the study, since one extension references only one questionnaire at a time.
+    </p>
+
+    <a name="questionnaireCreation"> </a>
+    <h4>Creation of a Questionnaire</h4>
+    <p>
+        As mentioned above, one <a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension-IEHR</a> references only one <a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a> in the QuestionnaireExtension-IEHR's QuestionnaireExtension.value (<i>Extension.extension:Questionnaire.value[x]</i>). The url (<i>Extension.extension:Questionnaire.url</i>) is set to "Questionnaire".
+        When creating a <a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a>, certain things need to be addressed as explained in more detail below.
+    </p>
+    <p>The biggest difference between a questionnaire and a Questionnaire-IEHR is that the question items of the Questionnaire-IEHR do not contain text but only codes. This approach ensures that a questionnaire can be available in multiple languages without having multiple instances of the same questionnaire. In addition, this minimizes translation-related ambiguities. So how does one create a Questionnaire-IEHR?</p>
+
+    <p>Handling of <a href="StructureDefinition-Questionnaire-IEHR.html">Questionnaire-IEHR</a>:</p>
+    <ul>
+        <li>A Questionnaire-IEHR must have an unique logical id (<i>Questionnaire.id</i>);</li>
+        <li>The CodeSystem associated with the questionnaire is referenced using the <a href="StructureDefinition-CodeSystemExtension-IEHR.html">CodeSystemExtension-IEHR</a>. It contains the reference to the <a href="StructureDefinition-CodeSystem-Questionnaire-IEHR.html">CodeSystem-Questionnaire-IEHR</a> in it's value (<i>extension.value[x]</i>);</li>
+        <li>To indicate in which publication status (draft, active, retired, unknown) the questionnaire is, the attribute Questionnaire.status is used;</li>
+        <li>The questions and sections within the Questionnaire are stated in the item attribute (<i>Questionnaire.item</i>). Each item must have an unique id (<i>item.linkId</i>);
+            <ul>
+                <li>To create a question group / a section, the item type is set to "group" (<i>item.type</i>). The questions belonging to the group are then created under item.item. The following described attribution options of a question are also valid for the nested questions; </li>
+                <li>To create a question, the item type (<i>item.type</i>) is set to a type describing the data type of the question, i.g. boolean, string, integer ... . </li>
+                <li>The actual question, i.e. the text, is NOT specified in the text attribute (<i>item.text</i>).
+                    Each question is created as code in the questionnaire-specific code system.
+                    It may be useful to code each question by sequential numbers. For example, CodeSystem.url = url-of-codesystem, CodeSystem.code = 1.1, CodeSystem.display = Surname would be referenced in the Questionnaire as Questionnaire.item.code.code = 1.1, Questionnaire.item.code.system = url-of-codesystem;
+                    The same applies to the section name. This is also specified as code.</li>
+                <li>By using codes instead of text, it is easier to keep the questions in different languages, because the translations of a question can be specified as a designation in the CodeSystem. More about this can be found on the page <a href="translation.html#translation-instructions-for-the-questionnaire-iehr">Translation Instructions</a>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>Some other questionnaire-relevant data can be specified in the non-mandatory attributes as described below.</p>
+    <ul>
+        <li>If multiple versions of a questionnaire are available, the corresponding version number should be stated in Questionnaire.version;</li>
+        <li>The questionnaire's human friendly title may be specified in the Questionnaire.title attribute, while the computer friendly title should be located in Questionnaire.name;</li>
+        <li>The organization or individual issuing the questionnaire can be specified in Questionnaire.publisher;</li>
+        <li>One or more contact details of the publisher can be specified in Questionnaire.contactDetails.</li>
+    </ul>
+    <p>Note that the profile offers further attributes, which can be found in full in the profile's snapshot table.</p>
+
+    <a name="questionnaireExtSpec"> </a>
+    <h4>Further Specification of a Questionnaire</h4>
+    <p>
+        In addition to the actual questionnaire, the X can be used to add further questionnaire-related attributes.
+    </p>
+    <a name="questionnaireExtDeadline"> </a>
+    <h5>Setting a Deadline for a Questionnaire</h5>
+    <p>Since a questionnaire usually has a time for submission, the extension contains a mandatory DeadlineExtension. In this extension a deadline of the DataType dateTime can be specified.</p>
+    <p>
+        To specify the date that represents the deadline for the questionnaire, the date must be entered in the extension's value (<i>extension.value[x]</i>), e.g.: 2022-05-30. For further information about dateTime's format, see <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">HL7 FHIR Datatypes #dateTime</a>.
+        The url of the extension (<i>extension.url</i>) must be set to "Deadline".
+    </p>
+    <p>If the deadline passes and the participant has not completed the questionnaire, they will be excluded from the study.</p>
+
+    <a name="questionnaireExtReminderFreq"> </a>
+    <h5>Setting the Reminder Frequency</h5>
+    <p>
+        To express the frequency with which patients should be reminded to fill in the questionnaire that has not yet been completed, QuestionnaireExtension-IEHR contains the ReminderFrequencyExtension.
+    </p>
+    <p>Handling of ReminderFrequencyExtension's <a href="http://hl7.org/fhir/R4/datatypes.html#Timing">Timing</a>s attributes using examples: If the participant should be reminded ...</p>
+    <ul>
+        <li>... 2 times per 1 week: <i>frequency</i> = 2, <i>period</i> = 1 and <i>periodUnit</i> = wk</li>
+        <li>... every monday and friday: <i>dayOfWeek</i> = mon, fri</li>
+        <li>... every monday at 1 pm: <i>dayOfWeek</i> = mon, <i>timeOfDay</i> = 13:00:00</li>
+    </ul>
+    <p>Therefore, the meaning of these attributes is as follows: The participant should be reminded frequency times (<i>Timing.frequency</i>) per period (<i>Timing.period</i>) periodUnit (<i>Timing.periodUnit</i>).
+        The dayOfWeek attribute (<i>Timing.dayOfWeek</i>) can be used to specify which days of the week the participant should be reminded and timeOfDay (<i>Timing.timeOfDay</i>) can be used to specify the exact time.
+        This could be used to make sure the patient can immediately start with the questionnaire and does not forget it again, for example by choosing times when the participant is not working.
+    </p>
+    <p>Please note, that the profile does not check whether these attributes are consistent with each other, and that it is the responsibility of the study creator to ensure that the values make sense.</p>
+
+    <a name="enrollmentPeriodExt"> </a>
+    <h3>Specification of ResearchStudy's Enrollment</h3>
+    <p>
+        To specify the period in which new participants are accepted into the study, the <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a> gets mandatorily extended with the <a href="StructureDefinition-EnrollmentPeriodExtension-IEHR.html">EnrollmentPeriodExtension-IEHR</a>.
+        The respective time period is represented as the extension's value.
+    </p>
+
+    <a name="anonymizationExt"> </a>
+    <h3>Request of Anonymized/Pseudonymized Data</h3>
+    <p> Due to different types of Study, it is important to transmit the information whether certain information of the study's subjects need to be kept private or not.
+        For this purpose the <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a> is extended by the <a href="StructureDefinition-AnonymizationExtension-IEHR.html">AnonymizationExtension-IEHR</a>.
+        It represents how the answers to the study SHOULD be anonymized before they are sent to the research center. </p>
+
+    <p>The extension includes a Coding (<i>extension.value[x]</i>) which is bound to the <a href="ValueSet-AnonymizationValueSet-IEHR.html">Anonymization ValueSet</a>. </p>
+    <p>Handling of the <a href="StructureDefinition-AnonymizationExtension-IEHR.html">AnonymizationExtension-IEHR</a> and <a href="ValueSet-AnonymizationValueSet-IEHR.html">Anonymization ValueSet</a>: </p>
+    <ul>
+        <li>Code for removal of ALL personal information: anonymization. If a ResearchStudy is extended with the code anonymization, all personal information should be removed before data transmission.</li>
+        <li>Code for replacement of personal information: pseudonymization: If a ResearchStudy is extended with the code pseudonymization, all personal information should be replaced with pseudonyms before data transmission.</li>
+    </ul>
+    <p>Please note, that the <a href="StructureDefinition-AnonymizationExtension-IEHR.html">AnonymizationExtension-IEHR</a> may also be used to mark a resource as anonymized/pseudonymized in order to distinguish it from its original.</p>
+
+    <a name="cohort"> </a>
+    <h3>Inclusion + Exclusion criteria</h3>
+    <p>By default, not all people can participate in a study. Participants are selected on the basis of certain criteria.
+        If people with certain characteristics are grouped together, this can be referred to as a cohort.
+        For this reason, the ResearchStudy-IEHR references a <a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort-IEHR</a> derived from <a href="http://hl7.org/fhir/R4/group.html">Group</a> in the attribute enrollment (<i>ResearchStudy.enrollment</i>). Accordingly, the cohort contains all the characteristics that describe which people will be admitted as participants in the corresponding study.
+    </p>
+
+    <a name="cohortImpl"> </a>
+    <h5>Defining a <a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort-IEHR</a></h5>
+    <ul>
+        <li>A Cohort-IEHR must have an unique logical id (<i>Group.id</i>);</li>
+        <li>Since the project only addresses scenarios where studies are conducted with human participants only, the cohort's type (<i>Group.type</i>) is set to person.</li>
+        <li>To add a characteristic that describe which people will be admitted as participants in the study, a characteristics (<i>Group.characteristic</i>) must be added containing the following information:
+            <ul>
+                <li>Add the characteristic's type (<i>Group.characteristic.code</i>) to define what kind of characteristics it is. The code should be from the ValueSet <a href="ValueSet-CharacteristicCodeValueSet-IEHR.html">CharacteristicCodesValueSet</a>.</li>
+                <li>To specify the required expression of the characteristics, the attribute value (<i>Group.characteristics.value[x]</i>) is used. </li>
+                <li>The characteristics can be seen from two sides, either as an include or exclude expression.
+                    To prevent misinterpretation, the boolean attribute exclude (<i>Group.characteristic.exclude</i>) can be used to specify whether only persons with the previously specified characteristics should be included in the study (exclude = false) or if this group of persons should be excluded (exclude = true).</li>
+                <li>For example: a study can only enroll people with the administrative gender female.
+                    In this case, Group.characteristic.code = "72143-1" (Sex [HL7.v3]) can be used to indicate that the characteristic refers to the participant's gender.
+                    To state, that the administrative gender expression should be female, a CodeableConcept containing system = http://hl7.org/fhir/administrative-gender and code = female can be used.
+                    Lastly, it needs to be specified that we want to include not exclude people with this characteristic expression. Therefore, Group.characteristics.exclude = false.
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <a name="cohortNotes"> </a>
+    <h5>Notes about the use of Group.characterstic.valueCodeableConcept</h5>
+    <p>
+        The required expression of the characteristic can be represented, among other things, by a CodeableConcept.
+        It is possible that a CodeableConcept contains several codes. These are interpreted with an OR connection, accordingly persons with one or the other code are counted to the cohort.
+        This interpretation allows specifying characteristics in such a way that participants only need to be assigned one code from the list in order to participate in the study. This makes the study more general.
+        Examples:
+    </p>
+    <ul>
+        <li>If the characteristic's type (<i>Group.characteristic.code</i>) is Medication and the CodeableConcept contains multiple codings for different medications. Any person taking at least one of the medications has this characteristic and is considered part of the cohort;</li>
+        <li>If a study is about heart conditions in general, the characteristic's type (<i>Group.characteristic.code</i>) could be Condition while the CodeableConcept contains a list of different heart conditions;</li>
+        <li>If a study is about a group of drugs with a common active ingredient, the characteristic's type (<i>Group.characteristic.code</i>) could be Medication and the CodeableConcept contains multiple codings for the different medications.</li>
+    </ul>
+    <p>
+        If the CodeableConcept should contain a list of codes that represent a group of related codes from a hierarchically CodeSystem they might share a prefix.
+        In this case the Operator-Extension of the Coding-IEHR can be used: the operator will be set to startsWith and the coding contains the system, the common prefix in the display attribute and an empty code attribute.
+        This representation is equivalent to a list of all codes in the system that start with this prefix.
+        However, this representation should only be used after ensuring that no unwanted codes with this prefix exist. Otherwise, this might add unexpected characteristics to the Cohort and wrongly include or exclude participants.
+    </p>
+
+</div>

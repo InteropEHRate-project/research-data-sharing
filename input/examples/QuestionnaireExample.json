@@ -1,0 +1,377 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "CRFIntervalQuestionnaire",
+  "url": "http://interopEHRate.eu/fhir-resource/Questionnaire/CRFIntervalQuestionnaire",
+  "name": "CRFInterval",
+  "status": "active",
+  "date": "2022-04-25T12:12:36+02:00",
+  "item": [ {
+    "linkId": "sec1",
+    "prefix": "Section 1:",
+    "text": "Patient general data",
+    "type": "group",
+    "repeats": false,
+    "item": [ {
+      "linkId": "1.1",
+      "text": "Surname",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "1.2",
+      "text": "Name",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "1.3",
+      "text": "Allergies",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "1.4",
+      "text": "Gender",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueCoding": {
+          "system": "http://hl7.org/fhir/administrative-gender",
+          "code": "male",
+          "display": "Male"
+        }
+      }, {
+        "valueCoding": {
+          "system": "http://hl7.org/fhir/administrative-gender",
+          "code": "female",
+          "display": "Female"
+        }
+      } ]
+    }, {
+      "linkId": "1.5",
+      "text": "Date of birth (DD/MM/YYYY)",
+      "type": "date",
+      "repeats": false
+    } ]
+  }, {
+    "linkId": "sec2",
+    "prefix": "Section 2:",
+    "text": "Disease related data",
+    "type": "group",
+    "repeats": false,
+    "item": [ {
+      "linkId": "2.1",
+      "text": "Year of hypertension diagnosis",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "2.2",
+      "text": "blood pressure measurement SYS/DIA (mmHg/mmHg)",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "2.3",
+      "text": "Latest creatinine (mg/dL)",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "2.4",
+      "text": "Current Medications",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "2.5",
+      "text": "EKG report signal",
+      "type": "string",
+      "repeats": false
+    }, {
+      "linkId": "2.6",
+      "text": "Echocardiogram report and video",
+      "type": "attachment",
+      "repeats": false
+    }, {
+      "linkId": "2.7",
+      "text": "Latest left ventricular ejection fraction (%)",
+      "type": "decimal",
+      "repeats": false
+    }, {
+      "linkId": "2.8",
+      "text": "Latest interventricular septum thickness (mm)",
+      "type": "decimal",
+      "repeats": false
+    } ]
+  }, {
+    "linkId": "sec3",
+    "prefix": "Section 3:",
+    "text": "Questionnaire on side effects",
+    "type": "group",
+    "repeats": true,
+    "item": [ {
+      "linkId": "3.1",
+      "prefix": "1.",
+      "text": "Name of the Drug",
+      "type": "string",
+      "repeats": true
+    }, {
+      "linkId": "3.2",
+      "prefix": "2.",
+      "text": "Type of symptom(s)",
+      "type": "open-choice",
+      "repeats": true,
+      "answerOption": [ {
+        "valueString": "Cutaneous symptoms"
+      }, {
+        "valueString": "Nausea"
+      }, {
+        "valueString": "Constipation"
+      }, {
+        "valueString": "Palpitation"
+      }, {
+        "valueString": "Cough"
+      }, {
+        "valueString": "Swollen feet or legs"
+      }, {
+        "valueString": "Cold hands or feet"
+      }, {
+        "valueString": "Cramps"
+      }, {
+        "valueString": "Persistent dry cough"
+      }, {
+        "valueString": "Frequent urination"
+      }, {
+        "valueString": "Decreased sexual desire"
+      } ]
+    }, {
+      "linkId": "3.3",
+      "prefix": "3.",
+      "text": "How long the adverse event last?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "< 1 day"
+      }, {
+        "valueString": "1 day to 1 week"
+      }, {
+        "valueString": "1 week to 1 month"
+      }, {
+        "valueString": "> 1 month"
+      } ]
+    }, {
+      "linkId": "3.4",
+      "prefix": "4.",
+      "text": "Did you withdraw the drug?",
+      "type": "boolean",
+      "repeats": false
+    }, {
+      "linkId": "3.5",
+      "prefix": "5.",
+      "text": "Did the adverse reaction require specific treatment?",
+      "type": "boolean",
+      "repeats": false
+    } ]
+  }, {
+    "linkId": "sec4",
+    "prefix": "Section 4:",
+    "text": "Feasibility assessment",
+    "type": "group",
+    "repeats": false,
+    "item": [ {
+      "linkId": "4.1",
+      "text": "Preliminary Questions",
+      "type": "group",
+      "repeats": false,
+      "item": [ {
+        "linkId": "4.1.1",
+        "text": "Age",
+        "type": "integer",
+        "repeats": false
+      }, {
+        "linkId": "4.1.2",
+        "text": "Sex",
+        "type": "string",
+        "repeats": false
+      }, {
+        "linkId": "4.1.3",
+        "text": "Educational Level",
+        "type": "choice",
+        "repeats": false,
+        "answerOption": [ {
+          "valueString": "No studies"
+        }, {
+          "valueString": "Some School"
+        }, {
+          "valueString": "Graduate"
+        }, {
+          "valueString": "Postgraduate"
+        } ]
+      }, {
+        "linkId": "4.1.4",
+        "text": "Urban Zone (rural/ urban)",
+        "type": "string",
+        "repeats": false
+      }, {
+        "linkId": "4.1.5",
+        "text": "Profession (if retired, previously exercised",
+        "type": "string",
+        "repeats": false
+      }, {
+        "linkId": "4.1.6",
+        "text": "Do you routinely use apps of your smartphone/table in your daily life (excluded messages and phone calls)?",
+        "type": "boolean",
+        "repeats": false
+      }, {
+        "linkId": "4.1.7",
+        "text": "Do you have wifi/xDSL/3g/4g connection in you home",
+        "type": "boolean",
+        "repeats": false
+      } ]
+    }, {
+      "linkId": "4.2",
+      "text": "What satisfaction level do you have about the clinical staff explanation or instruction manual for use and maintenance of the system?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Very dissatisfied"
+      }, {
+        "valueString": "Dissatisfied"
+      }, {
+        "valueString": "Satisfied"
+      }, {
+        "valueString": "Very Satisfied"
+      } ]
+    }, {
+      "linkId": "4.3",
+      "text": "How would you rate the ease of use of the platform?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Very difficult"
+      }, {
+        "valueString": "Difficult"
+      }, {
+        "valueString": "Easy"
+      }, {
+        "valueString": "Very Easy"
+      } ]
+    }, {
+      "linkId": "4.4",
+      "text": "What satisfaction level do you have about the received clinical care provided by the use of the platform?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Very dissatisfied"
+      }, {
+        "valueString": "Dissatisfied"
+      }, {
+        "valueString": "Satisfied"
+      }, {
+        "valueString": "Very Satisfied"
+      } ]
+    }, {
+      "linkId": "4.5",
+      "text": "If you had any technical problem, were you satisfied with the solution of it?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Very dissatisfied"
+      }, {
+        "valueString": "Dissatisfied"
+      }, {
+        "valueString": "Satisfied"
+      }, {
+        "valueString": "Very Satisfied"
+      } ]
+    }, {
+      "linkId": "4.6",
+      "text": "How would you rate the mobile device operation?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Very unsafe"
+      }, {
+        "valueString": "Bit unsafe"
+      }, {
+        "valueString": "Fairly safe"
+      }, {
+        "valueString": "Very safe"
+      } ]
+    }, {
+      "linkId": "4.7",
+      "text": "Has the INTEROPEHRATE System helped you understand better your disease?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Strongly disagree"
+      }, {
+        "valueString": "Disagree"
+      }, {
+        "valueString": "Agree"
+      }, {
+        "valueString": "Strongly Agree"
+      } ]
+    }, {
+      "linkId": "4.8",
+      "text": "Has the INTEROPEHRATE System allowed you to have more autonomy to access to hospitals or care Centres?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Strongly disagree"
+      }, {
+        "valueString": "Disagree"
+      }, {
+        "valueString": "Agree"
+      }, {
+        "valueString": "Strongly Agree"
+      } ]
+    }, {
+      "linkId": "4.9",
+      "text": "Do you consider that INTEROPEHRATE system has a major role i communicating with foreign healthcare provider?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Strongly disagree"
+      }, {
+        "valueString": "Disagree"
+      }, {
+        "valueString": "Agree"
+      }, {
+        "valueString": "Strongly Agree"
+      } ]
+    }, {
+      "linkId": "4.10",
+      "text": "The INTEROPEHRATE System has had a positive impact in the way that you live your disease?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Strongly disagree"
+      }, {
+        "valueString": "Disagree"
+      }, {
+        "valueString": "Agree"
+      }, {
+        "valueString": "Strongly Agree"
+      } ]
+    }, {
+      "linkId": "4.11",
+      "text": "Do you consider that your family/caregivers have been benefited from your use of the INTEROPEHRATE system by a lower possibility of psychological or physical burden that can cause the disease?",
+      "type": "choice",
+      "repeats": false,
+      "answerOption": [ {
+        "valueString": "Strongly disagree"
+      }, {
+        "valueString": "Disagree"
+      }, {
+        "valueString": "Agree"
+      }, {
+        "valueString": "Strongly Agree"
+      } ]
+    }, {
+      "linkId": "4.12",
+      "text": "Please mark from 1 to 4 your satisfaction level about the INTEROPEHRATE system (1 ist considered as Very dissatisfied and 4 as Very satisfied)?",
+      "type": "decimal",
+      "repeats": false
+    }, {
+      "linkId": "4.13",
+      "text": "Please mark from 1 to 4, if you would recommend other people to use the INTEROPEHRATE System",
+      "type": "decimal",
+      "repeats": false
+    } ]
+  } ]
+}

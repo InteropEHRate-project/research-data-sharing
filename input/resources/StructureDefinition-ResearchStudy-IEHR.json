@@ -1,0 +1,128 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/ResearchStudy-IEHR",
+  "name": "ResearchStudyIEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ResearchStudy",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ResearchStudy",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "ResearchStudy",
+      "path": "ResearchStudy",
+      "constraint": [ {
+        "key": "dom-7",
+        "severity": "error",
+        "human": "Either ResearchStudy.description or a PDF with documentation must be provided",
+        "expression": "description.exists() or relatedArtifact.where(type = 'documentation' and document.where(contentType = 'application/pdf' and data.exists()).exists()).exists()"
+      } ]
+    }, {
+      "id": "ResearchStudy.language",
+      "path": "ResearchStudy.language",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.text",
+      "path": "ResearchStudy.text",
+      "min": 1,
+      "type": [ {
+        "code": "Narrative",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Narrative-IEHR" ]
+      } ]
+    }, {
+      "id": "ResearchStudy.extension",
+      "path": "ResearchStudy.extension",
+      "slicing": {
+        "discriminator": [ {
+          "type": "value",
+          "path": "url"
+        } ],
+        "rules": "open"
+      }
+    }, {
+      "id": "ResearchStudy.extension:DataSetDefinition",
+      "path": "ResearchStudy.extension",
+      "sliceName": "DataSetDefinition",
+      "min": 1,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/DataSetDefinitionExtension-IEHR" ]
+      } ]
+    }, {
+      "id": "ResearchStudy.extension:Questionnaire",
+      "path": "ResearchStudy.extension",
+      "sliceName": "RDDQuestionnaire",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/QuestionnaireExtension-IEHR" ]
+      } ]
+    }, {
+      "id": "ResearchStudy.extension:EnrollmentPeriod",
+      "path": "ResearchStudy.extension",
+      "sliceName": "EnrollmentPeriod",
+      "min": 1,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/EnrollmentPeriodExtension-IEHR" ]
+      } ]
+    }, {
+      "id": "ResearchStudy.extension:RequestedAnonymizationType",
+      "path": "ResearchStudy.extension",
+      "sliceName": "RequestedAnonymizationType",
+      "min": 0,
+      "max": "1",
+      "type": [ {
+        "code": "Extension",
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/AnonymizationExtension-IEHR" ]
+      } ]
+    }, {
+      "id": "ResearchStudy.identifier",
+      "path": "ResearchStudy.identifier",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.title",
+      "path": "ResearchStudy.title",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.primaryPurposeType",
+      "path": "ResearchStudy.primaryPurposeType",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.contact",
+      "path": "ResearchStudy.contact",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.location",
+      "path": "ResearchStudy.location",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.description",
+      "path": "ResearchStudy.description",
+      "min": 0
+    }, {
+      "id": "ResearchStudy.enrollment",
+      "path": "ResearchStudy.enrollment",
+      "min": 1,
+      "type": [ {
+        "code": "Reference",
+        "targetProfile": [ "http://interopehrate.eu/fhir/StructureDefinition/Group-Cohort-IEHR" ]
+      } ]
+    }, {
+      "id": "ResearchStudy.period",
+      "path": "ResearchStudy.period",
+      "min": 1
+    }, {
+      "id": "ResearchStudy.site",
+      "path": "ResearchStudy.site",
+      "min": 1,
+      "type": [ {
+        "code": "Reference",
+        "targetProfile": [ "http://interopehrate.eu/fhir/StructureDefinition/Location-ReferenceResearchCenter-IEHR" ]
+      } ]
+    } ]
+  }
+}

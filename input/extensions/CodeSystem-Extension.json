@@ -1,0 +1,38 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CodeSystemExtension-IEHR",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/CodeSystemExtension-IEHR",
+  "name": "CodeSystemExtension",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [ {
+    "type": "fhirpath",
+    "expression": "Questionnaire"
+  } ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Extension",
+      "path": "Extension",
+      "short": "CodeSystem",
+      "definition": "The extension points to the CodeSystem used to encode the questions and answers in the Questionnaire"
+    }, {
+      "id": "Extension.url",
+      "path": "Extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/CodeSystemExtension-IEHR"
+    }, {
+      "id": "Extension.value[x]",
+      "path": "Extension.value[x]",
+      "min": 1,
+      "max": "1",
+      "type": [ {
+        "code": "Reference",
+        "targetProfile": [ "http://interopehrate.eu/fhir/StructureDefinition/CodeSystem-Questionnaire-IEHR" ]
+      } ]
+    } ]
+  }
+}

@@ -1,0 +1,119 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+  <a name="examples"> </a>
+  <h3>List of Examples</h3>
+  <p>This page contains a list with the name and a short description for all the examples, that are defined in this IG. To see a list of all FHIR artifacts defined as part of this IG go to <a href="artifacts.html">Artifact Index</a>.</p>
+
+
+  <a name="cohort"> </a>
+  <h4>Examples for <a href="StructureDefinition-Group-Cohort-IEHR.html">Cohort-IEHR</a></h4>
+  <ul>
+    <li> <a href="Group-1.html">Cohort Example - 1</a>
+      <p> This example contains a Cohort that defines include and exclude characteristics for a ResearchStudy.</p>
+    </li>
+    <li><a href="Group-93415.html">Cohort Example - Operator</a>
+      <p>
+        This example contains a Cohort that defines include characteristics and a startWith-Operator.
+      </p></li>
+  </ul>
+
+  <a name="questionnaire"> </a>
+  <h4>Examples for <a href="https://www.hl7.org/fhir/questionnaire.html">Questionnaire</a></h4>
+  <ul>
+    <li>
+      <a href="Questionnaire-CRFIntervalQuestionnaire.html">Questionnaire Example - CRF Intervall</a>
+      <p>
+        This example contains a Questionnaire that can be used in a ResearchStudy.
+      </p>
+    </li>
+  </ul>
+
+  <a name="questionnaireResponse"></a>
+  <h4>Examples for <a href="https://www.hl7.org/fhir/questionnaireresponse.html">QuestionnaireResponse</a></h4>
+  <ul>
+    <li> <a href="QuestionnaireResponse-3234.html">QuestionnaireResponse Example - CRF Intervall</a>
+      <p>
+        This example contains a possible response to the <a href="Questionnaire-CRFIntervalQuestionnaire.html">Questionnaire Example - CRF Intervall</a>.
+      </p></li>
+  </ul>
+
+  <a name="location"> </a>
+  <h4>Examples for <a href="StructureDefinition-Location-ReferenceResearchCenter-IEHR.html">ReferenceResearchCenter-IEHR</a></h4>
+
+  <ul>
+    <li><a href="Location-1.html">Location Example - 1</a>
+      <p>
+        This is an example Location.
+      </p></li>
+
+    <li><a href="Location-45578.html">Location Example - CHU</a>
+      <p>
+        This example contains a Location for the CHU de Liège clinic.
+      </p></li>
+
+    <li><a href="Location-45590.html">Location Example - FTGM</a>
+      <p>
+        This example contains a Location for the Fondazione Toscana Gabriele Monasterio clinic.
+      </p></li>
+
+  </ul>
+
+  <a name="researchStudy"> </a>
+  <h4>Examples for <a href="StructureDefinition-ResearchStudy-IEHR.html">ResearchStudy-IEHR</a></h4>
+
+  <ul>
+    <li><a href="Bundle-32085763.html">ResearchStudy Example - Expired</a>
+      <p>
+        This example shows a ResearchStudy where the enrollment period is already over and show the repräsentation of this in the demo.
+      </p></li>
+
+    <li><a href="Bundle-3208576423.html">ResearchStudy Example - NoMatch</a>
+      <p>
+        This example was created to have no match with the demo patients and show the repräsentation of this in the demo.
+      </p></li>
+
+    <li><a href="Bundle-3611.html">ResearchStudy Example - CRP</a>
+      <p>
+        This example contains a CRP ResearchStudy.
+      </p></li>
+
+    <li><a href="Bundle-877311.html">ResearchStudy Example - 1</a>
+      <p>
+        This example contains a ResearchStudy.
+      </p></li>
+
+    <li><a href="Bundle-db734647-fc99-424c-a864-7e3cda82e703.html">ResearchStudy Example - FTGM</a>
+      <p>
+        This example contains a ResearchStudy that was created to request data provided in an example resource from FTGM.
+      </p></li>
+
+    <li><a href="Bundle-20220615.html">ResearchStudy Example - FTGM - Frequency</a>
+      <p>
+        This example contains a ResearchStudy that was created to request data provided in an example resource from FTGM. Furthermore, the example includes a frequency that represent the request for an one-time data transmission.
+      </p></li>
+
+    <li><a href="Bundle-3201111.html">ResearchStudy Example - Function</a>
+      <p>
+        This bundle contains an example for a ResearchStudy with a function on the DataRequirements.
+      </p></li>
+
+    <li><a href="Bundle-87731142.html">ResearchStudy Example - PDF</a>
+      <p>
+        This bundle contains an example for a ResearchStudy with a related pdf containing a description of the Study.
+      </p></li>
+
+    <li><a href="ResearchStudy-563453.html">ResearchStudy Example - Reference</a>
+      <p>
+        This example is a ResearchStudy where the other resources, like the Location, are only referenced.
+      </p></li>
+
+  </ul>
+
+  <a name="otherExamples"> </a>
+  <h4>Other Examples</h4>
+  <ul>
+    <li><a href="Bundle-1216512.html">VitalSign Example</a></li>
+    <li><a href="Endpoint-1111.html">Endpoint Example</a></li>
+  </ul>
+
+
+</div>

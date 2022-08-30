@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "Function-Codes-IEHR",
+  "url": "http://interopehrate.eu/fhir/CodeSystem/Function-Codes-IEHR",
+  "name": "FunctionCode",
+  "title": "Possible codes for the Function Extension",
+  "status": "draft",
+  "experimental": true,
+  "date": "2022-01-28T12:24:32+01:00",
+  "description": "This CodeSystem contains the possible functions that can be used in the function extension",
+  "caseSensitive": false,
+  "content": "complete",
+  "concept": [ {
+    "code": "ageFromDate",
+    "display": "AgeFromDate",
+    "definition": "The Function returns the age of the patient at the time the resource was created. The age is computed from the birthdate of the patient and the creation date of the resource"
+  }, {
+    "code": "count",
+    "display": "Count",
+    "definition": "The Function returns the number of matching resources, but not the resources"
+  }, {
+    "code": "data",
+    "display": "Data",
+    "definition": "The Function removes the text element from the returned resource"
+  }, {
+    "code": "summary",
+    "display": "Summary",
+    "definition": "The Function returns only the attributes of the resource that are marked as summary in the resources StructureDefinition"
+  }, {
+    "code": "element",
+    "display": "Element",
+    "definition": "The Function returns only the attributes of the resource that are specified in the parameters"
+  } ]
+}

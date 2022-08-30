@@ -1,0 +1,36 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/Operator-Extension-IEHR",
+  "name": "OperatorExtensionIEHR",
+  "title": "Operator-Extension-IEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [ {
+    "type": "element",
+    "expression": "Coding"
+  } ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Extension.url",
+      "path": "Extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/Operator-Extension-IEHR"
+    }, {
+      "id": "Extension.value[x]",
+      "path": "Extension.value[x]",
+      "min": 1,
+      "max": "1",
+      "type": [ {
+        "code": "Coding"
+      } ],
+      "binding": {
+        "strength": "required",
+        "valueSet": "http://interopehrate.eu/fhir/ValueSet/CodingOperator-IEHR"
+      }
+    } ]
+  }
+}

@@ -1,0 +1,46 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<a name="notesParameter"> </a>
+<h3>Notes about the parameter extension</h3>
+<p>
+The use and allowed cardinality of the parameter extension changes depending on the name of the called function.<br/>
+However, if this extension contains a parameter the path specified MUST define an attribute of the resource defined in DataRequirement.type, since the function ist applied to all resources
+that fulfill the DataRequirement. 
+</p>
+
+<a name="ageFromDate"> </a>
+<h4>ageFromDate</h4>
+<p>
+The ageFromDate function returns the age of the resources subject, calculated from the birthdate of the subject and the date specified in the resource. <br/>
+This function should only have two parameter. The first points to the Reference to the subject and the second to the creation date of the resource. <br/>
+Constraint extIEHR-1 enforces that this function has exactly two parameter.
+</p>
+
+<a name="count"> </a>
+<h4>count</h4>
+<p>
+The count function returns only the number of resources, that fulfill the requirement. <br/>
+This function does not need any parameters and constrain extIEHR-2 enforces this.
+</p>
+
+<a name="data"> </a>
+<h4>data</h4>
+<p>
+The data function removes the text attribute before returning the rest. <br/>
+This function does not need any parameters and constrain extIEHR-3 enforces this.
+</p>
+
+<a name="summary"> </a>
+<h4>summary</h4>
+<p>
+The summary function returns only the attributes, that are marked as summary in the target resource. <br/>
+This function does not need any parameters the constrain extIEHR-4 enforces this. 
+</p>
+
+<a name="element"> </a>
+<h4>element</h4>
+<p>
+The element function returns only the attributes specified in the parameter extensions. <br/>
+This function can have any number of parameters, that point to attributes of the resource.<br/>
+It needs at least one, otherwise the function would return an empty resource, and the constrain extIEHR-5 enforces this.
+</p>
+</div>

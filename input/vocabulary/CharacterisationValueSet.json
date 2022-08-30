@@ -1,0 +1,31 @@
+{
+  "resourceType": "ValueSet",
+  "url": "http://interopehrate.eu/fhir/ValueSet/CharacteristicCodeValueSet-IEHR",
+  "name": "CharacteristicCodesValueSet",
+  "title": "Characteristic Codes ValueSet",
+  "status": "draft",
+  "description": "This ValueSet contains examples for the Group.characteristic codes",
+  "compose": {
+    "include": [ {
+      "system": "http://interopehrate.eu/fhir/CodeSystem/GroupCharacteristic-Code"
+    }, {
+      "system": "http://loinc.org",
+      "concept": [ {
+        "code": "30525-0",
+        "display": "Age"
+      }, {
+        "code": "72143-1",
+        "display": "Sex [HL7.v3]"
+      }, {
+        "code": "56816-2",
+        "display": "Patient location"
+      }, {
+        "code": "52471-0",
+        "display": "Medications"
+      }, {
+        "code": "75323-6",
+        "display": "Condition"
+      } ]
+    } ]
+  }
+}

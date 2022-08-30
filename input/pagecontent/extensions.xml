@@ -1,0 +1,58 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+  <a name="extensions"> </a>
+<h3>List of Extensions</h3>
+<p>This page contains a list with the name and a short description for all the extensions, that are defined in this IG. To see a list of all FHIR artifacts defined as part of this IG go to <a href="artifacts.html">Artifact Index</a>.</p>
+<ul>
+<li>
+<a href="StructureDefinition-AnonymizationExtension-IEHR.html">AnonymizationExtension-IEHR</a>
+<p>
+This extension extends the ResearchStudy resource and contains the type of annonymization used by the study<br/>
+Currently only anonymization and pseudoanonymization are valid types, but the list can be extended if necessary. 
+</p>
+</li>
+
+<li>
+<a href="StructureDefinition-DataSetDefinitionExtension-IEHR.html">DataSetDefinition</a>
+<p>
+This extension extends the ResearchStudy resource and contains a list of all DataRequirements for the study. <br/>
+Since each DataRequirement is one requested data point the DataSetDefinition contains a list of all information requested as part of the study. 
+</p>
+</li>
+
+<li>
+<a href="StructureDefinition-EnrollmentPeriodExtension-IEHR.html">EnrollmentPeriod</a>
+<p>
+This extension extends the ResearchStudy resource and the period during which new particapits can enroll in the study. 
+</p>
+</li>
+
+<li>
+<a href="StructureDefinition-FrequencyExtension-IEHR.html">FrequencyExtension-IEHR</a>
+<p>
+This extension extends the DataRequirement resource and contains the information how often the data should be send.<br/>
+</p>
+</li>
+
+<li>
+<a href="StructureDefinition-FunctionExtension-IEHR.html">FunctionExtension-IEHR</a>
+<p>
+This extension extends the DataRequirement resource and contains information how matching resources should be transformed before they are send.<br/>
+If this extension is missing from a DataRequirement the whole resource should be send.<br/>
+</p>
+</li>
+
+<li>
+<a href="StructureDefinition-Operator-Extension-IEHR.html">OperatorExtension-IEHR</a>
+<p>This extension contains a ValueSet with codes that can be used for the operator in Coding-IEHR.</p>
+</li>
+
+<li>
+<a href="StructureDefinition-QuestionnaireExtension-IEHR.html">QuestionnaireExtension</a>
+<p>
+This extension extends the ResearchStudy resource and contains a questionnaire that participats should fill out.<br/>
+It also contains a frequency how often the participant should be remindet to fill out the questionnaire and its deadline.
+</p>
+</li>
+
+</ul>
+</div>

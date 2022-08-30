@@ -1,0 +1,18 @@
+{
+  "resourceType": "ValueSet",
+  "url": "http://interopehrate.eu/fhir/ValueSet/AnonymizationValueSet-IEHR",
+  "name": "AnonymizationValueSet",
+  "title": "Anonymization ValueSet",
+  "status": "draft",
+  "description": "This ValueSet contains the types of anonymization that are supported by the ResearchStudy",
+  "compose": {
+    "include": [ {
+      "system": "http://interopehrate.eu/fhir/CodeSystem/AnonymizationType-IEHR",
+      "filter": [ {
+        "property": "ResearchStudyAnonymization",
+        "op": "=",
+        "value": "true"
+      } ]
+    } ]
+  }
+}

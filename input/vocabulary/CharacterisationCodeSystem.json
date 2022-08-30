@@ -1,0 +1,38 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "GroupCharacteristic-Code",
+  "url": "http://interopehrate.eu/fhir/CodeSystem/GroupCharacteristic-Code",
+  "name": "CharacteristicCodes",
+  "title": "Possible codes for GroupCharacteristic",
+  "status": "draft",
+  "experimental": true,
+  "date": "2022-02-16T11:03:45+01:00",
+  "description": "This CodeSystem contains possible codes that can be used in Group.characteristics",
+  "caseSensitive": false,
+  "content": "complete",
+  "concept": [ {
+    "code": "expected lifespan",
+    "display": "Expected lifespan",
+    "definition": "Characteristics with this code constrain the patients expected lifespan"
+  }, {
+    "code": "observation",
+    "display": "Observation",
+    "definition": "Characteristics with this code constrain observations of the patient"
+  }, {
+    "code": "procedure",
+    "display": "Procedure",
+    "definition": "Characteristics with this code constrain procedures undertaken by the patient"
+  }, {
+    "code": "encounter",
+    "display": "Encounter",
+    "definition": "Characteristics with this code constrain encounters that the patient took part in"
+  }, {
+    "code": "test",
+    "display": "Test",
+    "definition": "Characteristics with this code define tests the patient must have completed"
+  }, {
+    "code": "consent",
+    "display": "Consent",
+    "definition": "Characteristics with this code define the consent document the patient must have signed to"
+  } ]
+}

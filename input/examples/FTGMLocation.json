@@ -1,0 +1,34 @@
+{
+  "resourceType": "Location",
+  "id": "45590",
+  "meta": {
+    "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Location-ReferenceResearchCenter-IEHR" ]
+  },
+  "identifier": [ {
+    "system": "http://interopEHRate.eu/fhir-resource/",
+    "value": "Location/FTGM01"
+  } ],
+  "name": "Fondazione Toscana Gabriele Monasterio",
+  "type": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+      "code": "CARD",
+      "display": "Ambulatory Health Care Facilities; Clinic/Center; Rehabilitation: Cardiac Facilities"
+    } ]
+  } ],
+  "telecom": [ {
+    "system": "phone",
+    "value": "+39 050 315 3229",
+    "use": "work"
+  } ],
+  "address": {
+    "use": "work",
+    "type": "postal",
+    "line": [ "Via Giuseppe Moruzzi 1" ],
+    "city": "Pisa",
+    "country": "ITA"
+  },
+  "endpoint": [ {
+    "reference": "Endpoint/1111"
+  } ]
+}

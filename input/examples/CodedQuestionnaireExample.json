@@ -1,0 +1,1586 @@
+{
+  "resourceType": "Bundle",
+  "id": "37421897",
+  "language": "en",
+  "type": "collection",
+  "timestamp": "2022-05-09T11:37:19.368+02:00",
+  "entry": [ {
+    "fullUrl": "http://interopEHRate.eu/fhir-resource/Questionnaire/CRFIntervalQuestionnaire",
+    "resource": {
+      "resourceType": "Questionnaire",
+      "id": "CRFIntervalQuestionnaire",
+      "meta": {
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/Questionnaire-IEHR" ]
+      },
+      "extension": [ {
+        "url": "http://interopehrate.eu/fhir/StructureDefinition/CodeSystemExtension-IEHR",
+        "valueReference": {
+          "reference": "CodeSystem/CRFIntervalQuestionnaire"
+        }
+      } ],
+      "url": "http://interopEHRate.eu/fhir-resource/RDD/Questionnaire/CRFIntervalQuestionnaire",
+      "name": "CRFInterval",
+      "_name": {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/translation",
+          "extension": [ {
+            "url": "lang",
+            "valueCode": "it"
+          }, {
+            "url": "content",
+            "valueString": "CRFIntervallo"
+          } ]
+        }, {
+          "url": "http://hl7.org/fhir/StructureDefinition/translation",
+          "extension": [ {
+            "url": "lang",
+            "valueCode": "fr"
+          }, {
+            "url": "content",
+            "valueString": "CRFIntervalle"
+          } ]
+        } ]
+      },
+      "status": "active",
+      "date": "2022-05-09T11:37:19+02:00",
+      "item": [ {
+        "linkId": "sec1",
+        "code": [ {
+          "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+          "code": "1"
+        } ],
+        "prefix": "Section 1:",
+        "type": "group",
+        "repeats": false,
+        "item": [ {
+          "linkId": "1.1",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "1.1"
+          } ],
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "1.2",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "1.2"
+          } ],
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "1.3",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "1.3"
+          } ],
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "1.4",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "1.4"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "1.4.1"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "1.4.2"
+            }
+          } ]
+        }, {
+          "linkId": "1.5",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "1.5"
+          } ],
+          "type": "date",
+          "repeats": false
+        } ]
+      }, {
+        "linkId": "sec2",
+        "code": [ {
+          "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+          "code": "2"
+        } ],
+        "prefix": "Section 2:",
+        "type": "group",
+        "repeats": false,
+        "item": [ {
+          "linkId": "2.1",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "ami.com.iehr.crf.q1"
+          } ],
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "2.2",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "ami.com.iehr.crf.q2"
+          } ],
+          "type": "decimal",
+          "repeats": false
+        }, {
+          "linkId": "2.3",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "2.3"
+          } ],
+          "type": "decimal",
+          "repeats": false
+        }, {
+          "linkId": "2.4",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "2.4"
+          } ],
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "2.5",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "2.5"
+          } ],
+          "type": "attachment",
+          "repeats": false
+        }, {
+          "linkId": "2.6",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "2.6"
+          } ],
+          "type": "attachment",
+          "repeats": false
+        }, {
+          "linkId": "2.7",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "2.7"
+          } ],
+          "type": "decimal",
+          "repeats": false
+        }, {
+          "linkId": "2.8",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "2.8"
+          } ],
+          "type": "decimal",
+          "repeats": false
+        } ]
+      }, {
+        "linkId": "sec3",
+        "code": [ {
+          "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+          "code": "3"
+        } ],
+        "prefix": "Section 3:",
+        "type": "group",
+        "repeats": true,
+        "item": [ {
+          "linkId": "3.1",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "ami.com.iehr.sideEffect.q1"
+          } ],
+          "prefix": "1.",
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "3.2",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.2"
+          } ],
+          "type": "string",
+          "repeats": false
+        }, {
+          "linkId": "3.3",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.3"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.4",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.4"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.5",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.5"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.6",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.6"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.7",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.7"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.8",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.8"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.9",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.9"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.10",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.10"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.11",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.11"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.12",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.12"
+          } ],
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.13",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "3.13"
+          } ],
+          "type": "string",
+          "repeats": true
+        }, {
+          "linkId": "3.14",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "ami.com.iehr.sideEffect.q3"
+          } ],
+          "prefix": "3.",
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sideEffect.adverseEvent.1Day"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sideEffect.adverseEvent.1DayTo1Week"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sideEffect.adverseEvent.1WeekTo1Month"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sideEffect.adverseEvent.1Month"
+            }
+          } ]
+        }, {
+          "linkId": "3.15",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "ami.com.iehr.sideEffect.q4"
+          } ],
+          "prefix": "4.",
+          "type": "boolean",
+          "repeats": false
+        }, {
+          "linkId": "3.16",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "ami.com.iehr.sideEffect.q5"
+          } ],
+          "prefix": "5.",
+          "type": "boolean",
+          "repeats": false
+        } ]
+      }, {
+        "linkId": "sec4",
+        "code": [ {
+          "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+          "code": "4"
+        } ],
+        "prefix": "Section 4:",
+        "type": "group",
+        "repeats": false,
+        "item": [ {
+          "linkId": "4.1",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.1"
+          } ],
+          "type": "group",
+          "repeats": false,
+          "item": [ {
+            "linkId": "4.1.1",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.1"
+            } ],
+            "type": "integer",
+            "repeats": false
+          }, {
+            "linkId": "4.1.2",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.1"
+            } ],
+            "type": "string",
+            "repeats": false
+          }, {
+            "linkId": "4.1.3",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.3"
+            } ],
+            "type": "choice",
+            "repeats": false,
+            "answerOption": [ {
+              "valueCoding": {
+                "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+                "code": "4.1.3.1"
+              }
+            }, {
+              "valueCoding": {
+                "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+                "code": "4.1.3.2"
+              }
+            }, {
+              "valueCoding": {
+                "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+                "code": "4.1.3.3"
+              }
+            }, {
+              "valueCoding": {
+                "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+                "code": "4.1.3.4"
+              }
+            } ]
+          }, {
+            "linkId": "4.1.4",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.4"
+            } ],
+            "type": "choice",
+            "repeats": false,
+            "answerOption": [ {
+              "valueCoding": {
+                "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+                "code": "4.1.4.1"
+              }
+            }, {
+              "valueCoding": {
+                "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+                "code": "4.1.4.2"
+              }
+            } ]
+          }, {
+            "linkId": "4.1.5",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.5"
+            } ],
+            "type": "string",
+            "repeats": false
+          }, {
+            "linkId": "4.1.6",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.6"
+            } ],
+            "type": "boolean",
+            "repeats": false
+          }, {
+            "linkId": "4.1.7",
+            "code": [ {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.1.7"
+            } ],
+            "type": "boolean",
+            "repeats": false
+          } ]
+        }, {
+          "linkId": "4.2",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.2"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.1"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.4"
+            }
+          } ]
+        }, {
+          "linkId": "4.3",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.3"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.3.1"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.3.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.3.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.3.4"
+            }
+          } ]
+        }, {
+          "linkId": "4.4",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.4"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.1"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.4"
+            }
+          } ]
+        }, {
+          "linkId": "4.5",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.5"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.1"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.2.4"
+            }
+          } ]
+        }, {
+          "linkId": "4.6",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.6"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.6.1"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.6.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.6.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.6.4"
+            }
+          } ]
+        }, {
+          "linkId": "4.7",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.7"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyDisagree"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyAgree"
+            }
+          } ]
+        }, {
+          "linkId": "4.8",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.8"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyDisagree"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyAgree"
+            }
+          } ]
+        }, {
+          "linkId": "4.9",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.9"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyDisagree"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyAgree"
+            }
+          } ]
+        }, {
+          "linkId": "4.10",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.10"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyDisagree"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyAgree"
+            }
+          } ]
+        }, {
+          "linkId": "4.11",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.11"
+          } ],
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [ {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyDisagree"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.2"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "4.7.3"
+            }
+          }, {
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+              "code": "li.com.iehr.sus.rangeLabel.stronglyAgree"
+            }
+          } ]
+        }, {
+          "linkId": "4.12",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.12"
+          } ],
+          "type": "decimal",
+          "repeats": false
+        }, {
+          "linkId": "4.13",
+          "code": [ {
+            "system": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+            "code": "4.13"
+          } ],
+          "type": "decimal",
+          "repeats": false
+        } ]
+      } ]
+    }
+  }, {
+    "fullUrl": "http://interopEHRate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+    "resource": {
+      "resourceType": "CodeSystem",
+      "id": "CRFIntervalQuestionnaire",
+      "meta": {
+        "profile": [ "http://interopehrate.eu/fhir/StructureDefinition/CodeSystem-Questionnaire-IEHR" ]
+      },
+      "language": "en",
+      "url": "http://interopehrate.eu/fhir-resource/CodeSystem/CRFIntervalQuestionnaire",
+      "name": "CodeSystemCRFIntervalQuestionnaire",
+      "status": "active",
+      "caseSensitive": false,
+      "content": "fragment",
+      "concept": [ {
+        "code": "1",
+        "display": "Patient general data",
+        "designation": [ {
+          "language": "it",
+          "value": "Dati generali del paziente"
+        }, {
+          "language": "fr",
+          "value": "Données générales sur le patient"
+        } ]
+      }, {
+        "code": "1.1",
+        "display": "Surname",
+        "designation": [ {
+          "language": "it",
+          "value": "Cognome"
+        }, {
+          "language": "fr",
+          "value": "Nom de famille"
+        } ]
+      }, {
+        "code": "1.2",
+        "display": "Name",
+        "designation": [ {
+          "language": "it",
+          "value": "Nome"
+        }, {
+          "language": "fr",
+          "value": "Nom"
+        } ]
+      }, {
+        "code": "1.3",
+        "display": "Allergies",
+        "designation": [ {
+          "language": "it",
+          "value": "Allergie"
+        }, {
+          "language": "fr",
+          "value": "Allergies"
+        } ]
+      }, {
+        "code": "1.4",
+        "display": "Gender",
+        "designation": [ {
+          "language": "it",
+          "value": "Genere"
+        }, {
+          "language": "fr",
+          "value": "Genre"
+        } ]
+      }, {
+        "code": "1.4.1",
+        "display": "male",
+        "designation": [ {
+          "language": "it",
+          "value": "maschio"
+        }, {
+          "language": "fr",
+          "value": "homme"
+        } ]
+      }, {
+        "code": "1.4.2",
+        "display": "female",
+        "designation": [ {
+          "language": "it",
+          "value": "femmina"
+        }, {
+          "language": "fr",
+          "value": "femme"
+        } ]
+      }, {
+        "code": "1.5",
+        "display": "Date of birth (DD/MM/YYYY)",
+        "designation": [ {
+          "language": "it",
+          "value": "Data di nascita  (DD/MM/YYYY)"
+        }, {
+          "language": "fr",
+          "value": "Date de naissance  (DD/MM/YYYY)"
+        } ]
+      }, {
+        "code": "2",
+        "display": "Disease related data",
+        "designation": [ {
+          "language": "it",
+          "value": "Dati relativi alla malattia"
+        }, {
+          "language": "fr",
+          "value": "Données relatives aux maladies"
+        } ]
+      }, {
+        "code": "ami.com.iehr.crf.q1",
+        "display": "Year of hypertension diagnosis",
+        "designation": [ {
+          "language": "it",
+          "value": "Anno di diagnosi dell'ipertensione"
+        }, {
+          "language": "fr",
+          "value": "Année du diagnostic d'hypertension"
+        } ]
+      }, {
+        "code": "ami.com.iehr.crf.q2",
+        "display": "blood pressure measurement SYS/DIA (mmHg/mmHg)",
+        "designation": [ {
+          "language": "it",
+          "value": "misurazione della pressione sanguigna SYS/DIA (mmHg/mmHg)"
+        }, {
+          "language": "fr",
+          "value": "mesure de la pression artérielle SYS/DIA (mmHg/mmHg)"
+        } ]
+      }, {
+        "code": "2.3",
+        "display": "Latest creatinine (mg/dL)",
+        "designation": [ {
+          "language": "it",
+          "value": "Ultima creatinina (mg/dL)"
+        }, {
+          "language": "fr",
+          "value": "Dernière créatinine (mg/dL)"
+        } ]
+      }, {
+        "code": "2.4",
+        "display": "Current Medications",
+        "designation": [ {
+          "language": "it",
+          "value": "Farmaci attuali"
+        }, {
+          "language": "fr",
+          "value": "Médicaments actuels"
+        } ]
+      }, {
+        "code": "2.5",
+        "display": "EKG report signal",
+        "designation": [ {
+          "language": "it",
+          "value": "Segnale del rapporto ECG"
+        }, {
+          "language": "fr",
+          "value": "Signal de rapport d'ECG"
+        } ]
+      }, {
+        "code": "2.6",
+        "display": "Echocardiogram report and video",
+        "designation": [ {
+          "language": "it",
+          "value": "Rapporto e video dell'ecocardiogramma"
+        }, {
+          "language": "fr",
+          "value": "Rapport et vidéo d'échocardiographie"
+        } ]
+      }, {
+        "code": "2.7",
+        "display": "Latest left ventricular ejection fraction (%)",
+        "designation": [ {
+          "language": "it",
+          "value": "Ultima frazione di eiezione ventricolare sinistra (%)"
+        }, {
+          "language": "fr",
+          "value": "Dernière fraction d'éjection du ventricule gauche (%)"
+        } ]
+      }, {
+        "code": "2.8",
+        "display": "Latest interventricular septum thickness (mm)",
+        "designation": [ {
+          "language": "it",
+          "value": "Ultimo spessore del setto interventricolare (mm)"
+        }, {
+          "language": "fr",
+          "value": "Dernière épaisseur du septum interventriculaire (mm)"
+        } ]
+      }, {
+        "code": "3",
+        "display": "Questionnaire on side effects",
+        "designation": [ {
+          "language": "it",
+          "value": "Questionario sugli effetti collaterali"
+        }, {
+          "language": "fr",
+          "value": "Questionnaire sur les effets secondaires"
+        } ]
+      }, {
+        "code": "ami.com.iehr.sideEffect.q1",
+        "display": "Name of the Drug",
+        "designation": [ {
+          "language": "it",
+          "value": "Nome del farmaco"
+        }, {
+          "language": "fr",
+          "value": "Nom du médicament"
+        } ]
+      }, {
+        "code": "3.2",
+        "display": "Cutaneous symptoms (please describe)",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomi cutanei (descrivere)"
+        }, {
+          "language": "fr",
+          "value": "Symptômes cutanés (décrivez s’il vous plait)"
+        } ]
+      }, {
+        "code": "3.3",
+        "display": "Symptom: Nausea",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Nausea"
+        }, {
+          "language": "fr",
+          "value": "Symptôme : Nausée"
+        } ]
+      }, {
+        "code": "3.4",
+        "display": "Symptom: Constipation",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Costipazione"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Constipation"
+        } ]
+      }, {
+        "code": "3.5",
+        "display": "Symptom: Palpitation",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Palpitazione"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Palpitation"
+        } ]
+      }, {
+        "code": "3.6",
+        "display": "Symptom: Cough",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Tosse"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Toux"
+        } ]
+      }, {
+        "code": "3.7",
+        "display": "Symptom: Swollen feet or legs",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Piedi o gambe gonfie"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Pieds ou jambes enflés"
+        } ]
+      }, {
+        "code": "3.8",
+        "display": "Symptom: Cold hands or feet",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Mani o piedi freddi"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Mains ou pieds froids"
+        } ]
+      }, {
+        "code": "3.9",
+        "display": "Symptom: Cramps",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Crampi"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Crampes"
+        } ]
+      }, {
+        "code": "3.10",
+        "display": "Symptom: Persistent dry cough",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Tosse secca persistente"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Toux sèche persistante"
+        } ]
+      }, {
+        "code": "3.11",
+        "display": "Symptom: Frequent urination",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Minzione frequente"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Miction fréquente"
+        } ]
+      }, {
+        "code": "3.12",
+        "display": "Symptom: Decreased sexual desire",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Diminuzione del desiderio sessuale"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Baisse du désir sexuel"
+        } ]
+      }, {
+        "code": "3.13",
+        "display": "Symptom: Other",
+        "designation": [ {
+          "language": "it",
+          "value": "Sintomo: Altro"
+        }, {
+          "language": "fr",
+          "value": "Symptôme: Autre"
+        } ]
+      }, {
+        "code": "ami.com.iehr.sideEffect.q3",
+        "display": "How long did the adverse event last?",
+        "designation": [ {
+          "language": "it",
+          "value": "Quanto è durato l'evento avverso?"
+        }, {
+          "language": "fr",
+          "value": "Combien de temps l'événement indésirable a-t-il duré ?"
+        } ]
+      }, {
+        "code": "li.com.iehr.sideEffect.adverseEvent.1Day",
+        "display": "< 1 day",
+        "designation": [ {
+          "language": "it",
+          "value": "<1 giorno"
+        }, {
+          "language": "fr",
+          "value": "<1 jour"
+        } ]
+      }, {
+        "code": "li.com.iehr.sideEffect.adverseEvent.1DayTo1Week",
+        "display": "1 day to 1 week",
+        "designation": [ {
+          "language": "it",
+          "value": "Da 1 giorno a 1 settimana"
+        }, {
+          "language": "fr",
+          "value": "1 jour à 1 semaine"
+        } ]
+      }, {
+        "code": "li.com.iehr.sideEffect.adverseEvent.1WeekTo1Month",
+        "display": "1 week to 1 month",
+        "designation": [ {
+          "language": "it",
+          "value": "Da 1 settimana a 1 mese"
+        }, {
+          "language": "fr",
+          "value": "1 semaine à 1 mois"
+        } ]
+      }, {
+        "code": "li.com.iehr.sideEffect.adverseEvent.1Month",
+        "display": "> 1 month",
+        "designation": [ {
+          "language": "it",
+          "value": "> 1 month"
+        }, {
+          "language": "fr",
+          "value": "> 1 mois"
+        } ]
+      }, {
+        "code": "ami.com.iehr.sideEffect.q4",
+        "display": "Did you withdraw the drug?",
+        "designation": [ {
+          "language": "it",
+          "value": "Ha ritirato la droga?"
+        }, {
+          "language": "fr",
+          "value": "Avez-vous retiré le médicament ?"
+        } ]
+      }, {
+        "code": "ami.com.iehr.sideEffect.q5",
+        "display": "Did the adverse reaction require specific treatment?",
+        "designation": [ {
+          "language": "it",
+          "value": "La reazione avversa ha richiesto un trattamento specifico?"
+        }, {
+          "language": "fr",
+          "value": "L'effet indésirable a-t-il nécessité un traitement spécifique ?"
+        } ]
+      }, {
+        "code": "4",
+        "display": "Feasibility assessment",
+        "designation": [ {
+          "language": "it",
+          "value": "Valutazione della fattibilità"
+        }, {
+          "language": "fr",
+          "value": "Évaluation de la faisabilité"
+        } ]
+      }, {
+        "code": "4.1",
+        "display": "Preliminary Questions",
+        "designation": [ {
+          "language": "it",
+          "value": "Domande preliminari"
+        }, {
+          "language": "fr",
+          "value": "Questions préliminaires"
+        } ]
+      }, {
+        "code": "4.1.1",
+        "display": "Age",
+        "designation": [ {
+          "language": "it",
+          "value": "Età"
+        }, {
+          "language": "fr",
+          "value": "Âge"
+        } ]
+      }, {
+        "code": "4.1.2",
+        "display": "Sex",
+        "designation": [ {
+          "language": "it",
+          "value": "Sesso"
+        }, {
+          "language": "fr",
+          "value": "Sexe"
+        } ]
+      }, {
+        "code": "4.1.3",
+        "display": "Educational Level",
+        "designation": [ {
+          "language": "it",
+          "value": "Livello di istruzione"
+        }, {
+          "language": "fr",
+          "value": "Niveau d'éducation"
+        } ]
+      }, {
+        "code": "4.1.3.1",
+        "display": "No studies",
+        "designation": [ {
+          "language": "it",
+          "value": "Nessuno studio"
+        }, {
+          "language": "fr",
+          "value": "Aucune étude"
+        } ]
+      }, {
+        "code": "4.1.3.2",
+        "display": "Some School",
+        "designation": [ {
+          "language": "it",
+          "value": "Alcune scuole"
+        }, {
+          "language": "fr",
+          "value": "Certaines écoles"
+        } ]
+      }, {
+        "code": "4.1.3.3",
+        "display": "Graduate",
+        "designation": [ {
+          "language": "it",
+          "value": "Laureato"
+        }, {
+          "language": "fr",
+          "value": "Diplômé"
+        } ]
+      }, {
+        "code": "4.1.3.4",
+        "display": "Postgraduate",
+        "designation": [ {
+          "language": "it",
+          "value": "Postgraduate"
+        }, {
+          "language": "fr",
+          "value": "Postgraduate"
+        } ]
+      }, {
+        "code": "4.1.4",
+        "display": "Urban Zone",
+        "designation": [ {
+          "language": "it",
+          "value": "Zona urbana"
+        }, {
+          "language": "fr",
+          "value": "Zone urbaine"
+        } ]
+      }, {
+        "code": "4.1.4.1",
+        "display": "urban",
+        "designation": [ {
+          "language": "it",
+          "value": "urbano"
+        }, {
+          "language": "fr",
+          "value": "urbain"
+        } ]
+      }, {
+        "code": "4.1.4.2",
+        "display": "rural",
+        "designation": [ {
+          "language": "it",
+          "value": "rurale"
+        }, {
+          "language": "fr",
+          "value": "rural"
+        } ]
+      }, {
+        "code": "4.1.5",
+        "display": "Profession (if retired, previously exercised)",
+        "designation": [ {
+          "language": "it",
+          "value": "Professione (se in pensione, precedentemente esercitata)"
+        }, {
+          "language": "fr",
+          "value": "Profession (si retraité, précédemment exercé)"
+        } ]
+      }, {
+        "code": "4.1.6",
+        "display": "Do you routinely use apps of your smartphone/table in your daily life (excluded messages and phone calls)?",
+        "designation": [ {
+          "language": "it",
+          "value": "Utilizzi abitualmente le app del tuo smartphone/tablet nella tua vita quotidiana (esclusi messaggi e telefonate)?"
+        }, {
+          "language": "fr",
+          "value": "Utilisez-vous régulièrement les applications de votre smartphone/tablette dans votre vie quotidienne (à l'exclusion des messages et des appels téléphoniques) ?"
+        } ]
+      }, {
+        "code": "4.1.7",
+        "display": "Do you have wifi/xDSL/3g/4g connection in you home",
+        "designation": [ {
+          "language": "it",
+          "value": "Avete una connessione wifi/xDSL/3g/4g in casa vostra"
+        }, {
+          "language": "fr",
+          "value": "Avez-vous une connexion wifi/xDSL/3g/4g chez vous ?"
+        } ]
+      }, {
+        "code": "4.2",
+        "display": "What satisfaction level do you have about the clinical staff explanation or instruction manual for use and maintenance of the system?",
+        "designation": [ {
+          "language": "it",
+          "value": "Che livello di soddisfazione ha riguardo alla spiegazione del personale clinico o al manuale di istruzioni per l'uso e la manutenzione del sistema?"
+        }, {
+          "language": "fr",
+          "value": "Quel est votre niveau de satisfaction concernant l'explication ou le manuel d'instruction du personnel clinique pour l'utilisation et la maintenance du système ?"
+        } ]
+      }, {
+        "code": "4.2.1",
+        "display": "Very dissatisfied",
+        "designation": [ {
+          "language": "it",
+          "value": "Molto insoddisfatto"
+        }, {
+          "language": "fr",
+          "value": "Très insatisfait"
+        } ]
+      }, {
+        "code": "4.2.2",
+        "display": "Dissatisfied",
+        "designation": [ {
+          "language": "it",
+          "value": "Insoddisfatto"
+        }, {
+          "language": "fr",
+          "value": "Insatisfaits"
+        } ]
+      }, {
+        "code": "4.2.3",
+        "display": "Satisfied",
+        "designation": [ {
+          "language": "it",
+          "value": "Soddisfatto"
+        }, {
+          "language": "fr",
+          "value": "Satisfaits"
+        } ]
+      }, {
+        "code": "4.2.4",
+        "display": "Very Satisfied",
+        "designation": [ {
+          "language": "it",
+          "value": "Molto soddisfatto"
+        }, {
+          "language": "fr",
+          "value": "Très satisfait"
+        } ]
+      }, {
+        "code": "4.3",
+        "display": "How would you rate the ease of use of the platform?",
+        "designation": [ {
+          "language": "it",
+          "value": "Come valuterebbe la facilità d'uso della piattaforma?"
+        }, {
+          "language": "fr",
+          "value": "Comment évaluez-vous la facilité d'utilisation de la plateforme ?"
+        } ]
+      }, {
+        "code": "4.3.1",
+        "display": "Very difficult",
+        "designation": [ {
+          "language": "it",
+          "value": "Molto difficile"
+        }, {
+          "language": "fr",
+          "value": "Très difficile"
+        } ]
+      }, {
+        "code": "4.3.2",
+        "display": "Difficult",
+        "designation": [ {
+          "language": "it",
+          "value": "Difficile"
+        }, {
+          "language": "fr",
+          "value": "Difficile"
+        } ]
+      }, {
+        "code": "4.3.3",
+        "display": "Easy",
+        "designation": [ {
+          "language": "it",
+          "value": "Facile"
+        }, {
+          "language": "fr",
+          "value": "Facile"
+        } ]
+      }, {
+        "code": "4.3.4",
+        "display": "Very Easy",
+        "designation": [ {
+          "language": "it",
+          "value": "Molto facile"
+        }, {
+          "language": "fr",
+          "value": "Très facile"
+        } ]
+      }, {
+        "code": "4.4",
+        "display": "What satisfaction level do you have about the received clinical care provided by the use of the platform?",
+        "designation": [ {
+          "language": "it",
+          "value": "Che livello di soddisfazione ha riguardo all'assistenza clinica ricevuta grazie all'uso della piattaforma?"
+        }, {
+          "language": "fr",
+          "value": "Quel est votre niveau de satisfaction concernant les soins cliniques reçus grâce à l'utilisation de la plateforme ?"
+        } ]
+      }, {
+        "code": "4.5",
+        "display": "If you had any technical problem, were you satisfied with the solution of it?",
+        "designation": [ {
+          "language": "it",
+          "value": "Se ha avuto qualche problema tecnico, è stato soddisfatto della sua soluzione?"
+        }, {
+          "language": "fr",
+          "value": "Si vous avez eu un problème technique, avez-vous été satisfait de sa résolution ?"
+        } ]
+      }, {
+        "code": "4.6",
+        "display": "How would you rate the mobile device operation?",
+        "designation": [ {
+          "language": "it",
+          "value": "Come valuterebbe il funzionamento del dispositivo mobile?"
+        }, {
+          "language": "fr",
+          "value": "Comment évaluez-vous le fonctionnement du dispositif mobile ?"
+        } ]
+      }, {
+        "code": "4.6.1",
+        "display": "Very unsafe",
+        "designation": [ {
+          "language": "it",
+          "value": "Molto insicuro"
+        }, {
+          "language": "fr",
+          "value": "Très peu sûr"
+        } ]
+      }, {
+        "code": "4.6.2",
+        "display": "Bit unsafe",
+        "designation": [ {
+          "language": "it",
+          "value": "Bit non sicuro"
+        }, {
+          "language": "fr",
+          "value": "Bit non sécurisé"
+        } ]
+      }, {
+        "code": "4.6.3",
+        "display": "Fairly safe",
+        "designation": [ {
+          "language": "it",
+          "value": "Abbastanza sicuro"
+        }, {
+          "language": "fr",
+          "value": "Assez sûr"
+        } ]
+      }, {
+        "code": "4.6.4",
+        "display": "Very safe",
+        "designation": [ {
+          "language": "it",
+          "value": "Molto sicuro"
+        }, {
+          "language": "fr",
+          "value": "Très sûr"
+        } ]
+      }, {
+        "code": "4.7",
+        "display": "Has the INTEROPEHRATE System helped you understand better your disease?",
+        "designation": [ {
+          "language": "it",
+          "value": "Il sistema INTEROPEHRATE l'ha aiutata a capire meglio la sua malattia?"
+        }, {
+          "language": "fr",
+          "value": "Le système INTEROPEHRATE vous a-t-il aidé à mieux comprendre votre maladie ?"
+        } ]
+      }, {
+        "code": "li.com.iehr.sus.rangeLabel.stronglyDisagree",
+        "display": "Strongly disagree",
+        "designation": [ {
+          "language": "it",
+          "value": "Fortemente in disaccordo"
+        }, {
+          "language": "fr",
+          "value": "Pas du tout d'accord"
+        } ]
+      }, {
+        "code": "4.7.2",
+        "display": "Disagree",
+        "designation": [ {
+          "language": "it",
+          "value": "Non sono d'accordo"
+        }, {
+          "language": "fr",
+          "value": "Pas d'accord"
+        } ]
+      }, {
+        "code": "4.7.3",
+        "display": "Agree",
+        "designation": [ {
+          "language": "it",
+          "value": "Sono d'accordo"
+        }, {
+          "language": "fr",
+          "value": "D'accord"
+        } ]
+      }, {
+        "code": "li.com.iehr.sus.rangeLabel.stronglyAgree",
+        "display": "Strongly Agree",
+        "designation": [ {
+          "language": "it",
+          "value": "Fortemente d'accordo"
+        }, {
+          "language": "fr",
+          "value": "Tout à fait d'accord"
+        } ]
+      }, {
+        "code": "4.8",
+        "display": "Has the INTEROPEHRATE System allowed you to have more autonomy to access to hospitals or care Centres?",
+        "designation": [ {
+          "language": "it",
+          "value": "Il sistema INTEROPEHRATE le ha permesso di avere più autonomia nell'accesso agli ospedali o ai centri di cura?"
+        }, {
+          "language": "fr",
+          "value": "Le système INTEROPEHRATE vous a-t-il permis d'avoir plus d'autonomie pour accéder aux hôpitaux ou aux centres de soins ?"
+        } ]
+      }, {
+        "code": "4.9",
+        "display": "Do you consider that INTEROPEHRATE system has a major role in communicating with foreign healthcare provider?",
+        "designation": [ {
+          "language": "it",
+          "value": "Ritiene che il sistema INTEROPEHRATE abbia un ruolo importante nella comunicazione con l'operatore sanitario straniero?"
+        }, {
+          "language": "fr",
+          "value": "Considérez-vous que le système INTEROPEHRATE joue un rôle important dans la communication avec le prestataire de soins étranger ?"
+        } ]
+      }, {
+        "code": "4.10",
+        "display": "The INTEROPEHRATE System has had a positive impact in the way that you live your disease?",
+        "designation": [ {
+          "language": "it",
+          "value": "Il sistema INTEROPEHRATE ha avuto un impatto positivo sul modo in cui vive la sua malattia?"
+        }, {
+          "language": "fr",
+          "value": "Le système INTEROPEHRATE a eu un impact positif sur la façon dont vous vivez votre maladie ?"
+        } ]
+      }, {
+        "code": "4.11",
+        "display": "Do you consider that your family/caregivers have been benefited from your use of the INTEROPEHRATE system by a lower possibility of psychological or physical burden that can cause the disease?",
+        "designation": [ {
+          "language": "it",
+          "value": "Ritiene che i suoi familiari/caregiver abbiano tratto beneficio dall'uso del sistema INTEROPEHRATE con una minore possibilità di carico psicologico o fisico che può causare la malattia?"
+        }, {
+          "language": "fr",
+          "value": "Considérez-vous que votre famille/les personnes qui s'occupent de vous ont bénéficié de votre utilisation du système INTEROPEHRATE par une moindre possibilité de charge psychologique ou physique pouvant entraîner la maladie ?"
+        } ]
+      }, {
+        "code": "4.12",
+        "display": "Please mark from 1 to 4 your satisfaction level about the INTEROPEHRATE system (1 ist considered as Very dissatisfied and 4 as Very satisfied)?",
+        "designation": [ {
+          "language": "it",
+          "value": "Per favore segni da 1 a 4 il suo livello di soddisfazione sul sistema INTEROPEHRATE (1 è considerato molto insoddisfatto e 4 molto soddisfatto)?"
+        }, {
+          "language": "fr",
+          "value": "Veuillez indiquer de 1 à 4 votre degré de satisfaction à l'égard du système INTEROPEHRATE (1 est considéré comme très insatisfait et 4 comme très satisfait) ?"
+        } ]
+      }, {
+        "code": "4.13",
+        "display": "Please mark from 1 to 4, if you would recommend other people to use the INTEROPEHRATE System",
+        "designation": [ {
+          "language": "it",
+          "value": "Indichi da 1 a 4 se raccomanderebbe ad altre persone di usare il sistema INTEROPEHRATE"
+        }, {
+          "language": "fr",
+          "value": "Veuillez indiquer de 1 à 4 si vous recommanderiez à d'autres personnes d'utiliser le système INTEROPEHRATE."
+        } ]
+      } ]
+    }
+  } ]
+}

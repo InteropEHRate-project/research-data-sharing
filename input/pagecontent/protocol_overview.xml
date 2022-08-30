@@ -1,0 +1,96 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+  <a name="goals_and_scope"> </a>
+  <h3>Goals and Scope</h3>
+  <p>
+	The Research Data Sharing Protocol addresses the general problem of collecting health data for cross-border medical research.  
+	The motivation underlying the solution presented here is to enable cross-border data collection in a way that involves citizens more directly in the decisions regarding the sharing of their data. 
+	This is achieved through a novel approach that retrieves data directly from the electronic health records stored on citizens’ smartphones. Citizens have complete control over their data as they can give or decline consent 
+	for data sharing on a per-study basis, and be informed of precisely what data is used by a given study.
+  </p>
+  <p>
+	In order to respond to the numerous technical challenges underlying such an approach, the Protocol brings novel solutions as well as relying on existing results from inside and outside the InteropEHRate project. 
+	It deals with the heterogeneity of cross-border data through relying on interoperable data representations, such as the Interoperability Profile defined by the InteropEHRate project. 
+	It automates data queries and the checking of eligibility criteria inside the smartphone. It addresses privacy constraints by in-phone data anonymization. 
+	It ensures the security of data transmission between smartphones and research centres by relying on state-of-the-art encryption techniques. 
+	It provides a formal framework for consensual data sharing through digital signatures.
+  </p>
+ <a name="actors_and_systems"> </a>
+ <h3>Actors and Systems</h3>
+ <p> The Protocol involves the following human actors: </p>
+ <ul>
+  <li><b>Citizen</b>: any person potentially participating in a research study with his/her health data, and having the minimal technical means to do so, i.e. the S-EHR App installed on their smartphone.</li>
+  <li><b>Principal Investigator (PI) of the Study</b>: the researcher (person) in charge of a specific study, including its formal definition.</li>
+  <li><b>Principal Investigator (PI) of a Research Centre</b>: the researcher (person) in charge of the patients enrolled for a specific study at a RC. The actions of the PI of the Research Centre are not covered by the Protocol.</li>
+  <li><b>Central Node Administrator</b>: a person that oversees the publishing of new research studies on the Research Network.</li>
+ </ul> 
+ <p> These actors intervene through the following systems:</p>
+ <ul>
+  <li><b>S-EHR App.</b> The application installed on the Citizen’s smartphone that stores and manages the Citizen’s health records , and is in charge of executing elements of the Protocol on the phone.</li>
+  <li><b>Central Node (CN).</b> A node of the Research Network (a server) that stores published research studies and provides a central access point to S-EHR Apps for retrieving the descriptions of research studies.</li>
+  <li><b>Research Centre Information System.</b> The information system of a research centre participating in a given study. It collects data shared by a set of citizens who are officially attached to this centre for the duration of the study.</li>
+ </ul>
+ 
+ <a name="communication_channels"> </a>
+ <h3>Communication Channels</h3>
+ <p> The main interfaces of the Protocol, as shown in Figure 1, are the following: </p>
+  <ul>
+  <li><b>Research Interface (RDSI):</b>consent, enrollment-related communication, and the sending of citizen health data  happen through this interface.</li>
+  <li><b>Research Definition Document Download Interface (RDDI):</b>the S-EHR App downloads data w.r.t. newly published studies through this interface.</li>
+ </ul>
+  <a name="data_exchanged"> </a>
+ <h3>Data Exchanged</h3>
+ <p> The following are the main kinds of data whose exchange is covered by the Protocol:</p>
+  <ul>
+  <li><b>Research Definition Documents</b>structured documents formally describing research studies, including enrollment and exit criteria, data queries, a human-readable description of the study, and other study-related metadata;</li>
+  <li><b>Pseudonymized health data for research:</b>citizen health data queried from the phone, pseudonymized/anonymized, and sent to a research centre;</li>
+  <li><b>Digitally signed consent: </b>a formal agreement between a citizen and a research centre about the participation of a citizen to a research study, or his/her withdrawal from it;</li>
+  <li><b>Enrollment and exit notifications:</b>messages indicating the successful enrollment of a citizen into a study, or his/her leaving of the study.</li>
+ </ul>
+ <p>
+	For the representation of health data, as well as queries and criteria, the Protocol adopts the FHIR standard [FHIR], as does the entire InteropEHRate project. 
+	This design choice allows the retrieval of health data from citizens’ S-EHRs directly, without requiring further data conversion mechanisms. 
+	Beyond FHIR itself, the Protocol requires the data contained in S-EHRs to conform to InteropEHRate’s highest, semantic level of interoperability, 
+	in order to ensure that cross-border data collection leads to meaningful results.
+ </p>
+ 
+  <a name="processes"> </a>
+ <h3>Processes</h3>
+ <p>
+  The execution of a research study, from its initial proposal by a Client until its closure and archival, is a long and complex process that can last years, 
+  even for retrospective studies where medical data are readily available.
+  Typically, the entire process involves the following macro-steps:
+ </p>
+  <ol>
+  <li>Pre-acceptance (GO / NO-GO)</li>
+  <li>Formulation of requests to execute a given research study (as a formal research description)</li>
+  <li>Approvals from the Ethical Committee as well as w.r.t. feasibility</li>
+  <li>Setting up of research environment</li>
+  <li>Setting up the cohort, including citizen consent</li>
+  <li>Retrieval of data</li>
+  <li>Preparation and linkage of datasets</li>
+  <li>Data analysis for the research experiment</li>
+  <li>Control of access to results</li>
+  <li>Archival of experiment and results</li>
+  <li>Closure</li>
+ </ol> 
+ <p>
+	Addressing all of the macro-steps above is out of the scope of the InteropEHRate project and of the Protocol itself. 
+	The Protocol’s focus, instead, is the way in which medical data are retrieved directly from citizens’ smartphones, with all the necessary handling of consent, privacy, and security aspects of the operation. 
+	For this reason, the Protocol only covers the macro-steps relevant to these operations (in italics above), namely:
+ </p>
+ <ul>
+  <li><b>Formulation of request:</b> only to the extent that the research study is defined in the form of a formal, machine-processable RDD document. The Protocol does not cover how the RDD is created, but it does cover the format used to create it.</li>
+  <li><b>Setting up the cohort:</b> this covers the verification of enrolment criteria, as well as gathering citizen consent. Citizens are provided with the possibility of subscribing and being enrolled into specific research studies, as well as withdrawing from them.</li>
+  <li><b>Retrieval of data:</b> the citizens’ data are transferred from their smartphones to their respective RRCs.</li>
+ </ul>
+ <p>Accordingly, the Protocol consists of the following macro-steps or phases:</p>
+ <ol>
+  <li><b>OPT-IN:</b> the Citizen opts in to participating in research studies in general.</li>
+  <li><b>PUBLISHING:</b> the PI of the Study publishes the formal description of a new research study.</li> 
+  <li><b>ENROLLMENT:</b> the consenting Citizen is enrolled into a specific study.</li>
+  <li><b>DATA RETRIEVAL:</b> relevant health data is retrieved from the Citizen’s phone.</li>
+  <li><b>WITHDRAWAL:</b> the Citizen decides to withdraw from providing further data to a given study.</li>
+  <li><b>OPT-OUT:</b> the Citizen decides to opt out from a given study or from all current and future studies.</li>
+  <li><b>MONITORING:</b> the PI of the RC monitors the study, having the possibility to view Citizen interactions and participation statistics.</li>
+ </ol>
+</div>

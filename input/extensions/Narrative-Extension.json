@@ -1,0 +1,83 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/NarrativeExtension-IEHR",
+  "name": "NarrativeExtensionIEHR",
+  "title": "NarrativeExtension - IEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [ {
+    "type": "element",
+    "expression": "Narrative"
+  } ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "Extension",
+      "path": "Extension",
+      "short": "NarrativeExtension",
+      "definition": "The extension represents the Narrative in additional languages"
+    }, {
+      "id": "Extension.extension:lang",
+      "path": "Extension.extension",
+      "sliceName": "lang",
+      "min": 1,
+      "max": "1",
+      "type": [ {
+        "code": "Extension"
+      } ]
+    }, {
+      "id": "Extension.extension:lang.url",
+      "path": "Extension.extension.url",
+      "type": [ {
+        "code": "uri"
+      } ],
+      "fixedUri": "lang"
+    }, {
+      "id": "Extension.extension:lang.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "code"
+      } ],
+      "binding": {
+        "strength": "preferred",
+        "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+      }
+    }, {
+      "id": "Extension.extension:narrative",
+      "path": "Extension.extension",
+      "sliceName": "narrative",
+      "min": 1,
+      "max": "1",
+      "type": [ {
+        "code": "Extension"
+      } ]
+    }, {
+      "id": "Extension.extension:narrative.url",
+      "path": "Extension.extension.url",
+      "type": [ {
+        "code": "uri"
+      } ],
+      "fixedUri": "narrative"
+    }, {
+      "id": "Extension.extension:narrative.value[x]",
+      "path": "Extension.extension.value[x]",
+      "min": 1,
+      "type": [ {
+        "code": "markdown"
+      } ]
+    }, {
+      "id": "Extension.url",
+      "path": "Extension.url",
+      "fixedUri": "http://interopehrate.eu/fhir/StructureDefinition/NarrativeExtension-IEHR"
+    }, {
+      "id": "Extension.value[x]",
+      "path": "Extension.value[x]",
+      "max": "0"
+    } ]
+  }
+}

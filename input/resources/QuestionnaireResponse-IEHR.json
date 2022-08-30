@@ -1,0 +1,28 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "http://interopehrate.eu/fhir/StructureDefinition/QuestionnaireResponse-IEHR",
+  "name": "QuestionnaireResponseIEHR",
+  "title": "QuestionnaireResponseIEHR",
+  "status": "draft",
+  "fhirVersion": "4.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "QuestionnaireResponse",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+  "derivation": "constraint",
+  "differential": {
+    "element": [ {
+      "id": "QuestionnaireResponse.language",
+      "path": "QuestionnaireResponse.language",
+      "min": 1
+    }, {
+      "id": "QuestionnaireResponse.questionnaire",
+      "path": "QuestionnaireResponse.questionnaire",
+      "min": 1,
+      "type": [ {
+        "code": "canonical",
+        "targetProfile": [ "http://interopehrate.eu/fhir/StructureDefinition/Questionnaire-IEHR" ]
+      } ]
+    } ]
+  }
+}
