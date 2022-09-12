@@ -3,6 +3,7 @@
  "title" : "InteropEHRate Research Data Sharing Implementation Guide", 
  "canonical" : "https://build.fhir.org/ig/InteropEHRate-project/research-data-sharing/", 
  "introduction" : "The Research Data Sharing Protocol (in the following: the Protocol) addresses the general problem of collecting health data for cross-border medical research. ",
+ "category": "Research",
  "list" : [{
   "version" : "current",
   "desc" : "Continuous Integration Build (latest in version control)",
