@@ -1,0 +1,463 @@
+{
+  "resourceType": "Bundle",
+  "id": "9909090701",
+  "language": "en",
+  "type": "collection",
+  "timestamp": "2021-12-01T16:50:00.000+01:00",
+  "entry": [
+    {
+      "fullUrl": "http://interopEHRate.eu/fhir-resource/ResearchStudy/Interval_RDDBundle_PDF",
+      "resource": {
+        "resourceType": "ResearchStudy",
+        "id": "IntervalResearchStudy",
+        "meta": {"profile": ["http://interopehrate.eu/fhir/StructureDefinition/ResearchStudy-IEHR"]},
+        "text": {
+          "status": "extensions",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">To prevent error<\/div>"
+        },
+        "extension": [
+          {
+            "url": "http://interopehrate.eu/fhir/StructureDefinition/EnrollmentPeriodExtension-IEHR",
+            "valuePeriod": {
+              "start": "2020-01-01",
+              "end": "2020-07-01"
+            }
+          },
+          {
+            "url": "http://interopehrate.eu/fhir/StructureDefinition/AnonymizationExtension-IEHR",
+            "valueCoding": {
+              "system": "http://interopehrate.eu/fhir/CodeSystem/AnonymizationType-IEHR",
+              "code": "anonymization",
+              "display": "Anonymization"
+            }
+          },
+          {
+            "url": "http://interopehrate.eu/fhir/StructureDefinition/DataSetDefinitionExtension-IEHR",
+            "extension": [
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  },
+                    {
+                      "url": "http://interopehrate.eu/fhir/StructureDefinition/FunctionExtension-IEHR",
+                      "extension": [ {
+                        "url": "Name",
+                        "valueCoding": {
+                          "system": "http://interopehrate.eu/fhir/CodeSystem/Function-Codes-IEHR",
+                          "code": "element"
+                        }
+                      }, {
+                        "url": "Parameter",
+                        "valueString": "gender"
+                      }, {
+                        "url": "Parameter",
+                        "valueString": "birthDate"
+                      } ]
+                    }
+                  ],
+                  "type": "Patient"
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "type": "Observation",
+                  "codeFilter": [{
+                    "path": "category",
+                    "code": [{
+                      "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                      "code": "vital-signs"
+                    }]
+                  }],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {"start": "2015-09-14"}
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  }],
+                  "type": "Observation",
+                  "codeFilter": [{
+                    "path": "code",
+                    "code": [{
+                      "system": "http://loinc.org",
+                      "code": "8462-4",
+                      "display": "Diastolic blood pressure"
+                    }]
+                  }],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2015-09-14",
+                      "end": "2022-09-01"
+                    }
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  }],
+                  "type": "Observation",
+                  "codeFilter": [{
+                    "path": "code",
+                    "code": [{
+                      "system": "http://loinc.org",
+                      "code": "8480-6",
+                      "display": "Systolic blood pressure"
+                    }]
+                  }],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2015-09-14",
+                      "end": "2022-09-01"
+                    }
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  }],
+                  "type": "Observation",
+                  "codeFilter": [{
+                    "path": "code",
+                    "code": [{
+                      "system": "http://loinc.org",
+                      "code": "2160-0",
+                      "display": "Creatinine"
+                    }]
+                  }],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2015-09-14",
+                      "end": "2022-09-01"
+                    }
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  }],
+                  "type": "Observation",
+                  "codeFilter": [{
+                    "path": "code",
+                    "code": [{
+                      "system": "http://loinc.org",
+                      "code": "10230-1",
+                      "display": "Left ventricular Ejection fraction"
+                    }]
+                  }],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2015-09-14",
+                      "end": "2022-09-01"
+                    }
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  }],
+                  "type": "Observation",
+                  "codeFilter": [{
+                    "path": "code",
+                    "code": [{
+                      "system": "http://loinc.org",
+                      "code": "34534-8",
+                      "display": "EKG 12 channel panel"
+                    }]
+                  }],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2015-09-14",
+                      "end": "2022-09-01"
+                    }
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "extension": [{
+                    "url": "http://interopehrate.eu/fhir/StructureDefinition/FrequencyExtension-IEHR",
+                    "valueTiming": {"repeat": {
+                      "frequency": 1,
+                      "period": 1,
+                      "periodUnit": "mo"
+                    }}
+                  }],
+                  "type": "AllergyIntolerance",
+                  "codeFilter": [{
+                    "path": "code",
+                    "code": [{"system": "http://loinc.org"}]
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "type": "MedicationStatement",
+                  "codeFilter": [
+                    {
+                      "path": "medicationReference.code",
+                      "valueSet": "http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips"
+                    }
+                  ],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2020-09-14",
+                      "end": "2025-09-14"
+                    }
+                  }]
+                }
+              },
+              {
+                "url": "DataRequirement",
+                "valueDataRequirement": {
+                  "type": "Questionnaire",
+                  "codeFilter": [{"path": "https://www.hl7.org/fhir/questionnaire-definitions.html#Questionnaire"}],
+                  "dateFilter": [{
+                    "path": "effectivePeriod",
+                    "valuePeriod": {
+                      "start": "2022-01-01",
+                      "end": "2022-09-14"
+                    }
+                  }]
+                }
+              }
+            ]
+          }
+        ],
+        "identifier": [{
+          "system": "urn:oid:1.11.111.1.1.11.111.11",
+          "value": "ResearchStudy/exampleResearchStudy"
+        }],
+        "title": "INTERVAL Research Study",
+        "status": "active",
+        "primaryPurposeType": {"coding": [{
+          "system": "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type",
+          "code": "supportive-care",
+          "display": "Supportive Care"
+        }]},
+        "condition": [{"coding": [{
+          "system": "http://hl7.org/fhir/sid/icd-9-cm",
+          "code": "401",
+          "display": "Essential hypertension"
+        }]}],
+        "contact": [{
+          "name": "Dr. Giuseppe Vergaro",
+          "telecom": [{
+            "system": "phone",
+            "value": "+390503152216"
+          }]
+        }],
+        "location": [
+          {"coding": [{
+            "system": "urn:iso:std:iso:3166",
+            "code": "IT",
+            "display": "Italy"
+          }]},
+          {"coding": [{
+            "system": "urn:iso:std:iso:3166",
+            "code": "BE",
+            "display": "Belgium"
+          }]}
+        ],
+        "description": "Study of medication side effects for hypertensive patients",
+        "enrollment": [{"reference": "Group/Interval.EnrolmentCriteria.01"}],
+        "period": {
+          "start": "2020-07-09",
+          "end": "2025-09-14"
+        },
+        "site": [{"reference": "Location/Interval.Location.01"}]
+      }
+    },
+    {
+      "fullUrl": "http://interopEHRate.eu/fhir-resource/Group/Interval.EnrolmentCriteria.01",
+      "resource": {
+        "resourceType": "Group",
+        "id": "Interval.EnrolmentCriteria.01",
+        "meta": {"profile": ["http://interopehrate.eu/fhir/StructureDefinition/Group-Cohort-IEHR"]},
+        "type": "person",
+        "actual": false,
+        "characteristic": [
+          {
+            "code": {"coding": [{
+              "system": "http://loinc.org",
+              "code": "30525-0",
+              "display": "Age"
+            }]},
+            "valueRange": {
+              "low": {"value": 18},
+              "high": {"value": 120}
+            },
+            "exclude": false
+          },
+          {
+            "code": {"coding": [{
+              "system": "http://interopehrate.eu/fhir/CodeSystem/GroupCharacteristic-Code",
+              "code": "observation",
+              "display": "Observation"
+            }]},
+            "valueCodeableConcept": {"coding": [
+              {
+                "system": "http://hl7.org/fhir/sid/icd-9-cm",
+                "code": "401",
+                "display": "Essential hypertension"
+              },
+              {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "I10",
+                "display": "Essential (Primary) Hypertension"
+              }
+            ]},
+            "exclude": false,
+            "period": {"start": "1880-05-04"}
+          },
+          {
+            "code": {"coding": [{
+              "system": "http://interopehrate.eu/fhir/CodeSystem/GroupCharacteristic-Code",
+              "code": "observation",
+              "display": "Observation"
+            }]},
+            "valueCodeableConcept": {"coding": [{
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "F03.90",
+              "display": "Unspecified dementia without behavioral disturbance"
+            },
+              {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "F01.50",
+                "display": "Vascular dementia without behavioral disturbance"
+              }
+            ]},
+            "exclude": true,
+            "period": {"start": "2019-05-04"}
+          },
+          {
+            "code": {"coding": [{
+              "system": "http://loinc.org",
+              "code": "52471-0",
+              "display": "Medications"
+            }]},
+            "valueCodeableConcept": {"coding": [
+              { "system": "http://www.whocc.no/atc",
+                "code": "C02AA01",
+                "display": "rescinnamine"
+              },
+              {
+                "system": "http://www.whocc.no/atc",
+                "code": "C02AA02",
+                "display": "reserpine"
+              }
+            ]},
+            "exclude": false,
+            "period": {"start": "1880-05-04"}
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://interopEHRate.eu/fhir-resource/Location/Interval.Location.01",
+      "resource": {
+        "resourceType": "Location",
+        "id": "Interval.Location.01",
+        "meta": {"profile": ["http://interopehrate.eu/fhir/StructureDefinition/Location-ReferenceResearchCenter-IEHR"]},
+        "identifier": [{
+          "system": "urn:oid:1.11.111.1.1.11.111.11",
+          "value": "9090701"
+        }],
+        "name": "Fondazione Monasterio",
+        "type": [{"coding": [{
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "CVDX",
+          "display": "Cardiovascular diagnostics or therapeutics unit"
+        }]}],
+        "telecom": [{
+          "system": "phone",
+          "value": "+390503152611"
+        }],
+        "address": {
+          "type": "postal",
+          "line": ["Via Moruzzi, 1"],
+          "city": "Pisa",
+          "postalCode": "56124",
+          "country": "Italy"
+        },
+        "endpoint": [{"reference": "Endpoint/4621"}]
+      }
+    },
+    {
+      "fullUrl": "http://interopEHRate.eu/fhir-resource/Endpoint/4621",
+      "resource": {
+        "resourceType": "Endpoint",
+        "id": "4621",
+        "status": "off",
+        "connectionType": {
+          "system": "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+          "code": "hl7-fhir-rest",
+          "display": "HL7 FHIR"
+        },
+        "payloadType": [{"coding": [{
+          "system": "http://terminology.hl7.org/CodeSystem/endpoint-payload-type",
+          "code": "any",
+          "display": "Any"
+        }]}],
+        "address": "http://interopEHRate.eu/fhir-resource/"
+      }
+    }
+  ]
+}
