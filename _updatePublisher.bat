@@ -146,7 +146,7 @@ GOTO end
 
 :scripts
 
-REM Download all batch files (and this one with a new name)
+REM Download all batch files (and this one with a new name) tru to make it work
 
 SETLOCAL DisableDelayedExpansion
 
